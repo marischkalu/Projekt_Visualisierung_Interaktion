@@ -97,3 +97,4 @@ UnityProject/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Prop
 
 # Auto-generated scenes by play mode tests
 UnityProject/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+/UnityProject/Assets/realtime-CSG-for-unity
