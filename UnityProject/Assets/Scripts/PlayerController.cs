@@ -5,9 +5,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
-    private float _hor;
-    private float _ver;
-    [SerializeField] private float _rotationSpeed = 10f;
+    private float _horizontalMouse;
+    private float _verticalMouse;
+    private float _horizontalInput;
+    private float _verticalInput;
+    private float xRotation;
+    [SerializeField] private float _rotationSpeedVertical = 500f;
+    [SerializeField] private float _rotationSpeedHorizontal = 750f;
     [SerializeField] private float _movementSpeed = 0.2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,8 +22,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _hor = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
-        _ver = Input.GetAxisRaw("Vertical");   // W/S or Up/Down
+        _horizontalMouse = Input.GetAxis("Mouse X"); // Left/Right
+        _verticalMouse = Input.GetAxis("Mouse Y");   // Up/Down
+        _horizontalInput = Input.GetAxis("Horizontal"); // A/D
+        _verticalInput = Input.GetAxis("Vertical");   // W/S
 
         MovePlayerInLookDirection();
 
@@ -28,38 +34,24 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayerInLookDirection()
     {
-        // lookdirection from camera direction and player position
 
-        Vector3 cameraPositionOnPlane = new Vector3(
-            _camera.transform.position.x,
-            _rigidbody.transform.position.y,
-            _camera.transform.position.z
-        );
+        Quaternion deltaRotation = Quaternion.Euler(0f, _horizontalMouse * _rotationSpeedHorizontal * Time.deltaTime, 0f);
+        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
 
-        Vector3 playerPositionOnPlane = _rigidbody.transform.position;
-        Vector3 direction = playerPositionOnPlane - cameraPositionOnPlane;
-
-        // movement direction from input
-        Vector3 moveDir = (direction * _ver) + (Quaternion.Euler(0, 90, 0) * direction * _hor);
-
-        if (moveDir!=Vector3.zero) // check if input
+        if (_camera.transform.rotation.x > -0.7f && _verticalMouse <= 0)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDir.normalized);
-
-            _rigidbody.MoveRotation(
-                Quaternion.Slerp(
-                    _rigidbody.rotation,
-                    targetRotation,
-                    _rotationSpeed * Time.deltaTime
-                )
-            );
+            _camera.transform.Rotate(_verticalMouse * _rotationSpeedVertical * Time.deltaTime * -1f, 0f, 0f);
+        }
+        if (_camera.transform.rotation.x < 0.7f && _verticalMouse > 0)
+        {
+            _camera.transform.Rotate(_verticalMouse * _rotationSpeedVertical * Time.deltaTime * -1f, 0f, 0f);
         }
 
-        // Movement forward in the rotated direction (only if any axis input not zero)
 
         _rigidbody.MovePosition(
             _rigidbody.transform.position +
-            _rigidbody.transform.forward * Mathf.Max(Mathf.Abs(_ver), Mathf.Abs(_hor)) * _movementSpeed
+            _rigidbody.transform.forward * _verticalInput * _movementSpeed +
+            _rigidbody.transform.right * _horizontalInput * _movementSpeed
         );
     }
 
