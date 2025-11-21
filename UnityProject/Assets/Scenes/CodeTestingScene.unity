@@ -1028,6 +1028,7 @@ MonoBehaviour:
   _rotationSpeedVertical: 500
   _rotationSpeedHorizontal: 750
   _movementSpeed: 0.2
+  _throwForce: 550
 --- !u!54 &1124624341
 Rigidbody:
   m_ObjectHideFlags: 0
