@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class PaintingLevelEntry : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class PaintingLevelEntry : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag != "Player") return;
         if (_canEnter)
         {
             Debug.Log(collision.ToString());

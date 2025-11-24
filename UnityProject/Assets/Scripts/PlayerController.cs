@@ -1,5 +1,5 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,11 +14,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _rotationSpeedHorizontal = 750f;
     [SerializeField] private float _movementSpeed = 0.2f;
     [SerializeField] private float _throwForce = 200f;
+
+
+    private int _orbCount = 0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        Collectible.CollectibleCollisionEvent += CollectibleCollected;
     }
 
     // Update is called once per frame
@@ -64,15 +68,20 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        Vector3 oldPosition = _rigidbody.transform.position;
+        Vector3 newPostitionForward = _rigidbody.transform.forward * _verticalInput * _movementSpeed;
+        Vector3 newPostitionRight = _rigidbody.transform.right * _horizontalInput * _movementSpeed;
+        Vector3 newPosition = oldPosition + newPostitionForward + newPostitionRight;
+            
         _rigidbody.MovePosition(
-            _rigidbody.transform.position +
-            _rigidbody.transform.forward * _verticalInput * _movementSpeed +
-            _rigidbody.transform.right * _horizontalInput * _movementSpeed
+            newPosition
         );
     }
 
     void ThrowOrb()
     {
+        if (_orbCount < 1) return;
+
         GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         orb.transform.position = _camera.transform.position + _camera.transform.forward.normalized * 2;
         orb.transform.localScale = new Vector3(
@@ -85,6 +94,20 @@ public class PlayerController : MonoBehaviour
         Rigidbody rb = orb.AddComponent<Rigidbody>();
 
         rb.AddForce(_camera.transform.forward * _throwForce);
+
+        _orbCount--;
+        Debug.Log($"Orb Count: {_orbCount}");
+    }
+
+    void CollectibleCollected()
+    {
+        _orbCount++;
+        Debug.Log($"Orb Count: {_orbCount}");
+    }
+
+    void OnDestroy()
+    {
+        Collectible.CollectibleCollisionEvent -= CollectibleCollected;
     }
 
 }
