@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - ColorBottle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Clickable Layer
   - Water
   - UI
   - 

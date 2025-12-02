@@ -1,8 +1,13 @@
 using UnityEngine;
 using System;
+using UnityEngine.UIElements;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState { Active, Passive }
+    public static PlayerState CurrentPlayerState { get; private set; }
+
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
     private float _horizontalMouse;
@@ -17,12 +22,16 @@ public class PlayerController : MonoBehaviour
 
 
     private int _orbCount = 0;
+    private bool _hasBrush = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Collectible.CollectibleCollisionEvent += CollectibleCollected;
+        Collectible.CollectibleCollisionEvent += OnCollectibleCollision;
+        Minigame.MinigameStartEvent += OnMinigameStart;
+        Minigame.MinigameEndEvent += OnMinigameEnd;
+        Minigame.GainedBrushEvent += OnGainedBrush;
     }
 
     // Update is called once per frame
@@ -33,13 +42,30 @@ public class PlayerController : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal"); // A/D
         _verticalInput = Input.GetAxis("Vertical");   // W/S
 
-        RotatePlayer();
-        MovePlayer();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        switch (CurrentPlayerState)
         {
-            ThrowOrb();
+            case PlayerState.Active:
+
+                RotatePlayer();
+                MovePlayer();
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ThrowOrb();
+                }
+
+                if (Input.GetMouseButtonDown(0) && _hasBrush)
+                {
+                    UseBrush();
+                }
+                break;
+
+            case PlayerState.Passive:
+
+                
+                break;
         }
+
 
     }
 
@@ -78,6 +104,11 @@ public class PlayerController : MonoBehaviour
         );
     }
 
+    void UseBrush()
+    {
+        Debug.Log("You are using your brush!");
+    }
+
     void ThrowOrb()
     {
         if (_orbCount < 1) return;
@@ -99,15 +130,37 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Orb Count: {_orbCount}");
     }
 
-    void CollectibleCollected()
+    void OnCollectibleCollision()
     {
         _orbCount++;
         Debug.Log($"Orb Count: {_orbCount}");
     }
 
+    void OnMinigameStart()
+    {
+        CurrentPlayerState = PlayerState.Passive;
+    }
+
+    void OnMinigameEnd()//bool gainedReward)
+    {
+        //_hasBrush = gainedReward;
+        //if (_hasBrush) Debug.Log("You gained a paint brush.");
+        //else Debug.Log("Submitted color combination wrong, try again.");
+        CurrentPlayerState = PlayerState.Active;
+    }
+    
+    void OnGainedBrush()
+    {
+        _hasBrush = true;
+        Debug.Log("You gained a paint brush.");
+    }
+
     void OnDestroy()
     {
-        Collectible.CollectibleCollisionEvent -= CollectibleCollected;
+        Collectible.CollectibleCollisionEvent -= OnCollectibleCollision;
+        Minigame.MinigameStartEvent -= OnMinigameStart;
+        Minigame.MinigameEndEvent -= OnMinigameEnd;
+        Minigame.GainedBrushEvent -= OnGainedBrush;
     }
 
 }
