@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ch46_body 1
-  m_Shader: {fileID: -6465566751694194690, guid: 3ba657c4c4877a14a8c0db6fe0534e37,
+  m_Shader: {fileID: -6465566751694194690, guid: c66b35f75acf92a458379a30f36320da,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,6 +44,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Mask_R_Emission:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Base:
+        m_Texture: {fileID: 2800000, guid: ff96ba581e164f04ca99dc62b577dee2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -84,6 +88,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_70d629813cbe43b790c0f2975748e7df_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4cb301d4064c4734682b0b4aa9b9fdb3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_af0194faac874263a0e2b0d2770302ef_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4cb301d4064c4734682b0b4aa9b9fdb3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
