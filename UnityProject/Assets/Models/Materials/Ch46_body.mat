@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ch46_body
-  m_Shader: {fileID: -6465566751694194690, guid: da4e551dcf4656e439be5d98feb8c5df,
+  m_Shader: {fileID: -6465566751694194690, guid: d3b242dafa49b6b4297c14373c585986,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -48,6 +48,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: ff96ba581e164f04ca99dc62b577dee2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BrushMap:
+        m_Texture: {fileID: 2800000, guid: 6d3113e7b5fcc5145a8589a726254cb3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -115,6 +119,9 @@ Material:
     - _AmbientIntensity: 0.858
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _BrushContrast: 0.5
+    - _BrushStrength: 0.35
+    - _BrushTiling: 0.44
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -142,16 +149,20 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _ToonEdge1: 0.35
+    - _ToonEdge2: 0.6
     - _Toon_Ramp_Offset_Point: 0.5
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
-    - _BaseColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LightColor: {r: 1, g: 0.995283, b: 0.995283, a: 1}
     - _RimLightColor: {r: 0.028251233, g: 0.24528301, b: 0, a: 0}
+    - _ShadowColor: {r: 1, g: 0.0990566, b: 0.0990566, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
