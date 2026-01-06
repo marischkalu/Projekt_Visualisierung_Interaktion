@@ -44,14 +44,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _NoiseContrast: 0.04
-    - _NoiseScale: 5.76
+    - _NoiseScale: 1.14
     - _NoiseSpeed: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Ripple: 1
     - _RippleContrast: 0.22
-    - _RippleCount: 4.2
-    - _RippleSpeed: 0.92
+    - _RippleCount: 1.9
+    - _RippleSpeed: -1.12
     m_Colors:
     - _RippleCenter: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
