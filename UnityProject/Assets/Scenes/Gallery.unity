@@ -5699,8 +5699,8 @@ MonoBehaviour:
   _holdAfterVignette: 0.1
   _rippleCountProp: RippleCount
   _rippleSpeedProp: RippleSpeed
-  _rippleCountIdle: 0
-  _rippleSpeedIdle: 0
+  _rippleCountIdle: 1.34
+  _rippleSpeedIdle: 0.78
   _rippleCountNear: 12
   _rippleSpeedNear: 2
   _rippleFadeTime: 0.4
