@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ColorBottle
   - ColorBall
+  - Interactor
   layers:
   - Default
   - TransparentFX
