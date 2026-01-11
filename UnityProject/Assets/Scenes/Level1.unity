@@ -2551,6 +2551,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1798711545}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &685205289 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+    type: 3}
+  m_PrefabInstance: {fileID: 4567119409505573918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &706911686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,12 +4467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.67
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -7598,6 +7604,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1377296980}
     m_Modifications:
+    - target: {fileID: 1270534049334575674, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: arrow
+      value: 
+      objectReference: {fileID: 685205289}
     - target: {fileID: 1379407613203241987, guid: deb41a23471580545babb93a41c42422,
         type: 3}
       propertyPath: m_Name
@@ -7702,6 +7713,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309419563237545275, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
