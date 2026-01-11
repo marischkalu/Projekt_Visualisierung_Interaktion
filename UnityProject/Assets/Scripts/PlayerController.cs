@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
             newPosition
         );
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _rigidbody.AddForce(transform.up * _jumpForce);
             _rigidbody.AddForce(newPostitionForward * _jumpForce * 4f); // Apply Jump Force in Move Direction
