@@ -3423,7 +3423,7 @@ GameObject:
   - component: {fileID: 1124624342}
   - component: {fileID: 1124624341}
   - component: {fileID: 1124624340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3449,6 +3449,7 @@ MonoBehaviour:
   _rotationSpeedVertical: 500
   _rotationSpeedHorizontal: 500
   _movementSpeed: 0.2
+  _airMovementSpeed: 0.04
   _jumpForce: 300
   _throwForce: 400
 --- !u!54 &1124624341
@@ -7591,6 +7592,7 @@ GameObject:
   - component: {fileID: 2051206634}
   - component: {fileID: 2051206633}
   - component: {fileID: 2051206632}
+  - component: {fileID: 2051206636}
   m_Layer: 0
   m_Name: GroundZero
   m_TagString: Untagged
@@ -7613,7 +7615,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -7690,6 +7692,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2051206636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051206631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf0ced6fd00f146bae76bc9b1efa30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundZero
+  _affectedLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2102250259
 GameObject:
   m_ObjectHideFlags: 0
