@@ -2458,6 +2458,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1242602035}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 844c53131e582fb4192f622c9452d4ef,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242602039}
   m_SourcePrefab: {fileID: 100100000, guid: 844c53131e582fb4192f622c9452d4ef, type: 3}
 --- !u!1001 &535667018
 PrefabInstance:
@@ -3502,9 +3506,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _camera: {fileID: 230711075}
+  _floorLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _rotationSpeedVertical: 500
-  _rotationSpeedHorizontal: 750
+  _rotationSpeedHorizontal: 500
   _movementSpeed: 0.2
+  _airMovementSpeed: 0.04
+  _jumpForce: 300
   _throwForce: 400
 --- !u!54 &1124624341
 Rigidbody:
@@ -3514,7 +3523,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124624339}
   serializedVersion: 5
-  m_Mass: 0.001
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4139,6 +4148,33 @@ CapsuleCollider:
   m_Height: 0.28574118
   m_Direction: 1
   m_Center: {x: 0.0001024641, y: 0.14288016, z: -0.000009387725}
+--- !u!54 &1242602039
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242602031}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1280846245
 GameObject:
   m_ObjectHideFlags: 0

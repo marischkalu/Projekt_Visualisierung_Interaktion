@@ -1,9 +1,11 @@
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public class DissolveRevealOnTouch : MonoBehaviour
 {
+
     [Header("References")]
     [SerializeField] private Renderer _renderer;
+    private Rigidbody _rigidbody;
 
     [Header("Trigger Settings")]
     [SerializeField] private string _interactorTag = "Interactor";
@@ -17,7 +19,7 @@ public class DissolveRevealOnTouch : MonoBehaviour
     private static readonly int _PositionID = Shader.PropertyToID("_Position");
     private static readonly int _RadiusID = Shader.PropertyToID("_Radius");
 
-    private MaterialPropertyBlock _mpb;
+    private MaterialPropertyBlock _materialPropertyBlock;
     private bool _started;
     private Vector3 _center;
     private float _radius;
@@ -27,6 +29,12 @@ public class DissolveRevealOnTouch : MonoBehaviour
         _renderer = GetComponent<Renderer>();
     }
 
+    void Start()
+    {
+        
+        
+    }
+
     private void Awake()
     {
         if (_renderer == null)
@@ -34,7 +42,14 @@ public class DissolveRevealOnTouch : MonoBehaviour
             _renderer = GetComponent<Renderer>();
         }
 
-        _mpb = new MaterialPropertyBlock();
+        if (_rigidbody == null)
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        _rigidbody.isKinematic = true;
+
+        _materialPropertyBlock = new MaterialPropertyBlock();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +58,7 @@ public class DissolveRevealOnTouch : MonoBehaviour
         if (!other.CompareTag(_interactorTag)) return;
 
         _started = true;
+        _rigidbody.isKinematic = false;
 
         // Lock the reveal center at the point of interaction
         // (usually the interactor position)
@@ -75,9 +91,9 @@ public class DissolveRevealOnTouch : MonoBehaviour
 
     private void ApplyProperties()
     {
-        _renderer.GetPropertyBlock(_mpb);
-        _mpb.SetVector(_PositionID, _center);
-        _mpb.SetFloat(_RadiusID, _radius);
-        _renderer.SetPropertyBlock(_mpb);
+        _renderer.GetPropertyBlock(_materialPropertyBlock);
+        _materialPropertyBlock.SetVector(_PositionID, _center);
+        _materialPropertyBlock.SetFloat(_RadiusID, _radius);
+        _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
 }
