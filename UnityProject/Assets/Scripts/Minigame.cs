@@ -8,7 +8,7 @@ public class Minigame : MonoBehaviour
     public static event Action MinigameStartEvent;
     public static event Action MinigameEndEvent;
     public static event Action GainedBrushEvent;
-    private bool _playerInMinigameArea;
+    //private bool _playerInMinigameArea;
     private bool _minigameIsActive;
     private bool _minigameIsCompleted = false;
 
@@ -27,14 +27,35 @@ public class Minigame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _playerInMinigameArea && !_minigameIsActive && !_minigameIsCompleted)
+        //if (Input.GetKeyDown(KeyCode.E) && _playerInMinigameArea && !_minigameIsActive && !_minigameIsCompleted)
+        //{
+        //    ResetMinigame();
+        //    MinigameStartEvent?.Invoke();
+        //    _minigameIsActive = true;
+        //}
+
+
+    }
+
+    public void OnMinigameButtonPressed()
+    {
+        if (!_minigameIsActive)
         {
-            ResetMinigame();
-            MinigameStartEvent?.Invoke();
-            _minigameIsActive = true;
+            if (!_minigameIsCompleted)
+            {
+                ResetMinigame();
+                MinigameStartEvent?.Invoke();
+                _minigameIsActive = true;
+                Debug.Log("xx");
+            }
+                
         }
 
-
+        else
+        {
+            _canvas.enabled = false;
+            MinigameEnd();
+        }
     }
 
     void OnFinalize()
@@ -61,16 +82,16 @@ public class Minigame : MonoBehaviour
         _minigameIsActive = false;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag != "Player") return;
-        _playerInMinigameArea = true;
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag != "Player") return;
-        _playerInMinigameArea = false;
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag != "Player") return;
+    //    _playerInMinigameArea = true;
+    //}
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.tag != "Player") return;
+    //    _playerInMinigameArea = false;
+    //}
 
     void ResetMinigame()
     {
