@@ -2,10 +2,19 @@ using UnityEngine;
 
 public class PanelToggle : MonoBehaviour
 {
-    public GameObject panel;
+    [SerializeField] private GameObject _panel;
+    [SerializeField] private KeyCode _togglePanelKey = KeyCode.E;
 
-    public void TogglePanel()
+    void Update()
     {
-        panel.SetActive(!panel.activeSelf);
+        if (Input.GetKeyDown(_togglePanelKey))
+        {
+            TogglePanel();
+        }
+    }
+
+    void TogglePanel()
+    {
+        _panel.SetActive(!_panel.activeSelf);
     }
 }

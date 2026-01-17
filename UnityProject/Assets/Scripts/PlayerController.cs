@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState { Active, Passive }
     public static PlayerState CurrentPlayerState { get; private set; }
 
+    public static event Action<int> UpdateOrbCountEvent;
+
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
     [SerializeField] private LayerMask _floorLayer;
@@ -150,12 +152,14 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(_camera.transform.forward * _throwForce);
 
         _orbCount--;
+        UpdateOrbCountEvent?.Invoke(_orbCount);
         Debug.Log($"Orb Count: {_orbCount}");
     }
 
     void OnCollectibleCollision()
     {
         _orbCount++;
+        UpdateOrbCountEvent?.Invoke(_orbCount);
         Debug.Log($"Orb Count: {_orbCount}");
     }
 

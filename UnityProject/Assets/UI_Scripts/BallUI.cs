@@ -3,36 +3,44 @@ using UnityEngine.UI;
 
 public class BallUI : MonoBehaviour
 {
-    public Transform ballsParent;
-    private Image[] ballDots;
-    public Color fullColor = Color.green;
-    public Color emptyColor = Color.gray;
-    public int ballsLeft = 5;
+    [SerializeField] private Transform _ballsParent;
+    private Image[] _ballDots;
+    [SerializeField] private Color _fullColor = Color.green;
+    [SerializeField] private Color _emptyColor = Color.gray;
+    private int _orbCount = 0;
 
     void Start()
     {
         // get all children images automatically
-        ballDots = ballsParent.GetComponentsInChildren<Image>();
+        PlayerController.UpdateOrbCountEvent += OnUpdateOrbCount;
+        _ballDots = _ballsParent.GetComponentsInChildren<Image>();
         UpdateDots();
     }
 
-    public void UseBall()
+    void Update()
     {
-        if (ballsLeft > 0)
-        {
-            ballsLeft--;
-            UpdateDots();
-        }
+
+    }
+
+    void OnUpdateOrbCount(int newOrbCount)
+    {
+        _orbCount = newOrbCount;
+        UpdateDots();
     }
 
     void UpdateDots()
     {
-        for (int i = 0; i < ballDots.Length; i++)
+        for (int i = 0; i < _ballDots.Length; i++)
         {
-            if (i < ballsLeft)
-                ballDots[i].color = fullColor;
+            if (i < _orbCount)
+                _ballDots[i].color = _fullColor;
             else
-                ballDots[i].color = emptyColor;
+                _ballDots[i].color = _emptyColor;
         }
+    }
+
+    void OnDestroy()
+    {
+        PlayerController.UpdateOrbCountEvent -= OnUpdateOrbCount;
     }
 }

@@ -17,6 +17,7 @@ public class Minigame : MonoBehaviour
     [SerializeField] private Image _resultPositive;
     [SerializeField] private Image _resultNegative;
     [SerializeField] private List<ColorBottle> _colorBottles;
+    [SerializeField] private KeyCode _minigameKey = KeyCode.F;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +35,10 @@ public class Minigame : MonoBehaviour
         //    _minigameIsActive = true;
         //}
 
+        if (Input.GetKeyDown(_minigameKey))
+        {
+            OnMinigameButtonPressed();
+        }
 
     }
 
@@ -46,7 +51,6 @@ public class Minigame : MonoBehaviour
                 ResetMinigame();
                 MinigameStartEvent?.Invoke();
                 _minigameIsActive = true;
-                Debug.Log("xx");
             }
                 
         }
