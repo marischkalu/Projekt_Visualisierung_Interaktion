@@ -9,12 +9,18 @@ public class BallUI : MonoBehaviour
     [SerializeField] private Color _emptyColor = Color.gray;
     private int _orbCount = 0;
 
+
+    [SerializeField] Outline _ammoOrbHighlight;
+    [SerializeField] Outline _ammoColorHighlight;
+
     void Start()
     {
         // get all children images automatically
         PlayerController.UpdateOrbCountEvent += OnUpdateOrbCount;
+        PlayerController.SwitchAmmoEvent += OnSwitchAmmo;
         _ballDots = _ballsParent.GetComponentsInChildren<Image>();
         UpdateDots();
+        OnSwitchAmmo();
     }
 
     void Update()
@@ -39,8 +45,15 @@ public class BallUI : MonoBehaviour
         }
     }
 
+    void OnSwitchAmmo()
+    {
+        _ammoOrbHighlight.enabled = (PlayerController.CurrentAmmo == PlayerController.Ammo.Orb);
+        _ammoColorHighlight.enabled = (PlayerController.CurrentAmmo == PlayerController.Ammo.Color);
+    }
+
     void OnDestroy()
     {
         PlayerController.UpdateOrbCountEvent -= OnUpdateOrbCount;
+        PlayerController.SwitchAmmoEvent -= OnSwitchAmmo;
     }
 }

@@ -2111,6 +2111,8 @@ MonoBehaviour:
   _ballsParent: {fileID: 2121884233}
   _fullColor: {r: 0, g: 1, b: 0, a: 1}
   _emptyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  _ammoOrbHighlight: {fileID: 1350987499}
+  _ammoColorHighlight: {fileID: 1882742400}
 --- !u!224 &463579227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4714,6 +4716,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1349023505}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1350987495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4416395902310076975, guid: deb41a23471580545babb93a41c42422,
+    type: 3}
+  m_PrefabInstance: {fileID: 4567119409505573918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1350987499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350987495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 1, b: 0.76910114, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 0
 --- !u!1 &1366918032
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,6 +7165,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07015113, y: 0.12765943, z: 0.06711741}
   m_Center: {x: 0.000102439386, y: 0.06383949, z: -0.000009415028}
+--- !u!1 &1882742396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1918002164028022537, guid: deb41a23471580545babb93a41c42422,
+    type: 3}
+  m_PrefabInstance: {fileID: 4567119409505573918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1882742400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882742396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 1, b: 0.76910114, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 0
 --- !u!1001 &1891175943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8344,7 +8388,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2132229334}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1918002164028022537, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1882742400}
+    - targetCorrespondingSourceObject: {fileID: 4416395902310076975, guid: deb41a23471580545babb93a41c42422,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350987499}
   m_SourcePrefab: {fileID: 100100000, guid: deb41a23471580545babb93a41c42422, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

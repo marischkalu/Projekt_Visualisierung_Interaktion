@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState { Active, Passive }
     public static PlayerState CurrentPlayerState { get; private set; }
 
+    public enum Ammo { Orb, Color }
+    public static Ammo CurrentAmmo { get; private set; }
+
     public static event Action<int> UpdateOrbCountEvent;
+    public static event Action SwitchAmmoEvent;
 
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
@@ -56,18 +60,26 @@ public class PlayerController : MonoBehaviour
 
                 RotatePlayer();
                 MoveAndJump();
+                if(Input.GetAxis("Mouse ScrollWheel") != 0f)
+                {
+                    SwitchAmmo();
+                }
+                break;
 
+            case PlayerState.Passive:   
+                break;
+        }
+
+        switch (CurrentAmmo)
+        {
+            case Ammo.Orb:
                 if (Input.GetMouseButtonDown(0))
                 {
                     ThrowOrb();
                 }
-
-
                 break;
 
-            case PlayerState.Passive:
-
-                
+            case Ammo.Color:
                 break;
         }
 
@@ -132,6 +144,15 @@ public class PlayerController : MonoBehaviour
     void UseBrush()
     {
         Debug.Log("You are using your brush!");
+    }
+
+    void SwitchAmmo()
+    {
+        // This is ChatGpt's Work unfortunately.. I'm still trying to understand it
+        // It just iterates thru Ammo states
+        CurrentAmmo = (Ammo)(((int)CurrentAmmo + 1) % Enum.GetValues(typeof(Ammo)).Length);
+
+        SwitchAmmoEvent?.Invoke();
     }
 
     void ThrowOrb()

@@ -1482,6 +1482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 594d310019ff8b34184eae75f04f8e12,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 594d310019ff8b34184eae75f04f8e12,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2201,10 +2206,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3de27f5957cfe5438be3611a3f9838e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  walkAudio: {fileID: 0}
   _camera: {fileID: 230711075}
+  _floorLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _rotationSpeedVertical: 500
   _rotationSpeedHorizontal: 750
   _movementSpeed: 0.2
+  _airMovementSpeed: 0.04
+  _jumpForce: 300
   _throwForce: 300
 --- !u!54 &1124624341
 Rigidbody:
@@ -3306,6 +3317,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _minigameKey: 102
 --- !u!65 &1714058975
 BoxCollider:
   m_ObjectHideFlags: 0
