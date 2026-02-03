@@ -11,7 +11,6 @@ public class LevelPortal : MonoBehaviour
         _thisLevelNormalized = _thisLevel - 1;
         _renderer = GetComponent<Renderer>();
         if (_renderer != null) ChangeAvailability(_renderer, IsLevelAvailable());
-        Debug.Log($"{LoadLevel()[0]}, {LoadLevel()[1]}, {LoadLevel()[2]}");
     }
 
     // Update is called once per frame

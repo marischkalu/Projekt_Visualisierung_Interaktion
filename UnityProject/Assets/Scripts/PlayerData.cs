@@ -5,11 +5,8 @@ public class PlayerData
 {
     public bool[] LevelCompleted;
 
-    public PlayerData (bool levelOneCompleted, bool levelTwoCompleted, bool levelThreeCompleted)
+    public PlayerData (bool[] levelCompleted)
     {
-        LevelCompleted = new bool[3];
-        LevelCompleted[0] = levelOneCompleted;
-        LevelCompleted[1] = levelTwoCompleted;
-        LevelCompleted[2] = levelThreeCompleted;
+        LevelCompleted = levelCompleted;
     }
 }
