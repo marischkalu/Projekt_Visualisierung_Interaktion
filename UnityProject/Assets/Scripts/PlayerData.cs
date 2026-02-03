@@ -3,10 +3,13 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public int Level;
+    public bool[] LevelCompleted;
 
-    public PlayerData (int levelCompleted)
+    public PlayerData (bool levelOneCompleted, bool levelTwoCompleted, bool levelThreeCompleted)
     {
-        Level = levelCompleted;
+        LevelCompleted = new bool[3];
+        LevelCompleted[0] = levelOneCompleted;
+        LevelCompleted[1] = levelTwoCompleted;
+        LevelCompleted[2] = levelThreeCompleted;
     }
 }
