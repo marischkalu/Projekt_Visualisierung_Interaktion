@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _movementSpeed = 0.2f;
     [SerializeField] private float _airMovementSpeed = 0.04f;
     [SerializeField] private float _jumpForce = 300f;
-    [SerializeField] private float _throwForce = 200f;
+    [SerializeField] private float _orbThrowForce = 200f;
+    [SerializeField] private float _colorThrowForce = 800f;
 
     private bool _isGrounded = false;
 
@@ -80,6 +81,10 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case Ammo.Color:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    UseBrush();
+                }
                 break;
         }
 
@@ -143,13 +148,26 @@ public class PlayerController : MonoBehaviour
 
     void UseBrush()
     {
-        Debug.Log("You are using your brush!");
+        GameObject splash = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        splash.tag = "Interactor";
+        splash.GetComponent<Renderer>().material.color = Color.red;
+        splash.transform.position = _camera.transform.position + _camera.transform.forward.normalized * 2;
+        splash.transform.localScale = new Vector3(
+            0.3f,
+            0.3f,
+            0.3f
+        );
+
+        // Add a standard Rigidbody
+        Rigidbody rb = splash.AddComponent<Rigidbody>();
+        SplashBehaviour splashBehaviour = splash.AddComponent<SplashBehaviour>();
+
+        rb.AddForce(_camera.transform.forward * _colorThrowForce);
     }
 
     void SwitchAmmo()
     {
-        // This is ChatGpt's Work unfortunately.. I'm still trying to understand it
-        // It just iterates thru Ammo states
+        // iterates thru Ammo states
         CurrentAmmo = (Ammo)(((int)CurrentAmmo + 1) % Enum.GetValues(typeof(Ammo)).Length);
 
         SwitchAmmoEvent?.Invoke();
@@ -160,6 +178,7 @@ public class PlayerController : MonoBehaviour
         if (_orbCount < 1) return;
 
         GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        orb.GetComponent<Renderer>().material.color = Color.green;
         orb.transform.position = _camera.transform.position + _camera.transform.forward.normalized * 2;
         orb.transform.localScale = new Vector3(
             0.5f,
@@ -170,7 +189,7 @@ public class PlayerController : MonoBehaviour
         // Add a standard Rigidbody
         Rigidbody rb = orb.AddComponent<Rigidbody>();
 
-        rb.AddForce(_camera.transform.forward * _throwForce);
+        rb.AddForce(_camera.transform.forward * _orbThrowForce);
 
         _orbCount--;
         UpdateOrbCountEvent?.Invoke(_orbCount);

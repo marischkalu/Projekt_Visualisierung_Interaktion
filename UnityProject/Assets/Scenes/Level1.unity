@@ -3595,7 +3595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3de27f5957cfe5438be3611a3f9838e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  walkAudio: {fileID: 1124624346}
   _camera: {fileID: 230711075}
   _floorLayer:
     serializedVersion: 2
@@ -3605,7 +3604,8 @@ MonoBehaviour:
   _movementSpeed: 0.2
   _airMovementSpeed: 0.04
   _jumpForce: 300
-  _throwForce: 400
+  _orbThrowForce: 200
+  _colorThrowForce: 800
 --- !u!54 &1124624341
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4779,7 +4779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 1, b: 0.76910114, a: 1}
+  m_EffectColor: {r: 0, g: 1, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 0
 --- !u!1 &1366918032
@@ -7228,7 +7228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 1, b: 0.76910114, a: 1}
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 0
 --- !u!1001 &1891175943

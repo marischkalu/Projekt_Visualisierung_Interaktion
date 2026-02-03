@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431433094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e850120bc47b2a43975e0020afdde43, type: 3}
   m_Name: 
@@ -2088,7 +2088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ee4070c64fea24c9b4d328cb6ed04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintingLevelEntry
-  _thisLevel: 1
 --- !u!1001 &481201097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3171,7 +3170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ee4070c64fea24c9b4d328cb6ed04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintingLevelEntry
-  _thisLevel: 2
 --- !u!135 &985260074
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3506,7 +3504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3de27f5957cfe5438be3611a3f9838e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  walkAudio: {fileID: 1124624346}
   _camera: {fileID: 230711075}
   _floorLayer:
     serializedVersion: 2
@@ -3516,7 +3513,8 @@ MonoBehaviour:
   _movementSpeed: 0.2
   _airMovementSpeed: 0.04
   _jumpForce: 300
-  _throwForce: 400
+  _orbThrowForce: 200
+  _colorThrowForce: 800
 --- !u!54 &1124624341
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3639,7 +3637,7 @@ Transform:
   - {fileID: 706911687}
   - {fileID: 431433097}
   - {fileID: 230711077}
-  m_Father: {fileID: 1699537988}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1124624346
 AudioSource:
@@ -6133,38 +6131,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1699537987
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1699537988}
-  m_Layer: 0
-  m_Name: --PLAYER--
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1699537988
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699537987}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1124624345}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709099914
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,6 +6237,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _minigameKey: 102
 --- !u!65 &1714058975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8043,6 +8010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f3515db582308d34ea4162c77f38b4ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13088,8 +13060,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 902279778}
+  - {fileID: 1124624345}
   - {fileID: 1709099915}
-  - {fileID: 1699537988}
   - {fileID: 332536136}
   - {fileID: 1547069932}
   - {fileID: 91331770}

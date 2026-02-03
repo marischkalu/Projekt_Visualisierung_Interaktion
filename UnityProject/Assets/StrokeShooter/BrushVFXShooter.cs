@@ -1,6 +1,7 @@
 using UnityEngine;
-
-public class BrushVFXShooterFPS : MonoBehaviour
+using System;
+[Obsolete("Not used any more", true)]
+public class BrushVFXShooter : MonoBehaviour
 {
     [SerializeField] private Camera _camera;        // Player camera
     [SerializeField] private Transform _brushTip;   // Stroke spawn point

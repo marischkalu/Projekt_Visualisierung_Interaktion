@@ -52,17 +52,17 @@ public class DissolveRevealOnTouch : MonoBehaviour
         _materialPropertyBlock = new MaterialPropertyBlock();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
         if (_started) return;
-        if (!other.CompareTag(_interactorTag)) return;
+        if (!collision.gameObject.CompareTag(_interactorTag)) return;
 
         _started = true;
         _rigidbody.isKinematic = false;
 
         // Lock the reveal center at the point of interaction
         // (usually the interactor position)
-        _center = other.transform.position;
+        _center = collision.gameObject.transform.position;
 
         // Start reveal from a small radius
         _radius = _startRadius;

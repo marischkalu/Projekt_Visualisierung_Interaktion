@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 
+[Obsolete("Not used any more", true)]
 public class StrokeMover : MonoBehaviour
 {
     // Trail used to visualize the brush stroke in motion
