@@ -4,7 +4,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveLevel (int levelCompleted)
+    public static int TotalLevelCount = 3;
+
+    public static void SaveLevel (bool[] levelCompleted)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/level.cnt";

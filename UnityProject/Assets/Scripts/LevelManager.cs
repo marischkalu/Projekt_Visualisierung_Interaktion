@@ -3,10 +3,11 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int _thisLevel;
+    private int _thisLevelNormalized;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _thisLevelNormalized = _thisLevel - 1;
     }
 
     // Update is called once per frame
@@ -15,27 +16,32 @@ public class LevelManager : MonoBehaviour
         // DEBUGGING: Keys (AVE+S) -> SAVE GAME (LEVELUP)
         if (Input.GetKeyDown(KeyCode.S) && Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.V) && Input.GetKey(KeyCode.E))
         {
-            if (LoadLevel() <= _thisLevel) SaveLevel(_thisLevel + 1);
+            bool[] gameState = LoadLevel();
+
+            gameState[_thisLevelNormalized] = true;
+            SaveLevel(gameState);
+
             LoadGalleryScene();
         }
 
         // DEBUGGING: Keys (EST+R) -> DELETE GAME (RESET TO LEVEL 1)
         if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.T))
         {
-            SaveLevel(1);
+            bool[] levelCompleted = new bool[SaveSystem.TotalLevelCount];
+            SaveLevel(levelCompleted);
             LoadGalleryScene();
         }
     }
 
-    int LoadLevel()
+    bool[] LoadLevel()
     {
         PlayerData data = SaveSystem.LoadLevel();
-        return data.Level;
+        return data.LevelCompleted;
     }
 
-    void SaveLevel(int levelToSave)
+    void SaveLevel(bool[] levelCompleted)
     {
-        SaveSystem.SaveLevel(levelToSave);
+        SaveSystem.SaveLevel(levelCompleted);
     }
 
     void LoadGalleryScene()
