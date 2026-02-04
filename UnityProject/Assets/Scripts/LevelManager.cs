@@ -33,6 +33,11 @@ public class LevelManager : MonoBehaviour
         LoadGalleryScene();
     }
 
+    public void LevelEscape()
+    {
+        LoadGalleryScene();
+    }
+
     bool[] LoadLevel()
     {
         PlayerData data = SaveSystem.LoadLevel();

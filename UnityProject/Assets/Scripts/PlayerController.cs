@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
         Minigame.MinigameStartEvent += OnMinigameStart;
         Minigame.MinigameEndEvent += OnMinigameEnd;
         Minigame.GainedColorEvent += OnGainedColor;
+
+        PauseGame.PauseMenuOpenedEvent += OnPauseMenuOpened;
+        PauseGame.PauseMenuClosedEvent += OnPauseMenuClosed;
     }
 
     // Update is called once per frame
@@ -234,12 +237,32 @@ public class PlayerController : MonoBehaviour
 
     void OnMinigameStart()
     {
+        LockPlayer();
+    }
+
+    void OnMinigameEnd()
+    {
+        UnlockPlayer();
+    }
+
+    void OnPauseMenuOpened()
+    {
+        LockPlayer();
+    }
+
+    void OnPauseMenuClosed()
+    {
+        UnlockPlayer();
+    }
+
+    void LockPlayer()
+    {
         CurrentPlayerState = PlayerState.Passive;
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = true;
     }
-
-    void OnMinigameEnd()
+    
+    void UnlockPlayer()
     {
         CurrentPlayerState = PlayerState.Active;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
@@ -260,5 +283,8 @@ public class PlayerController : MonoBehaviour
         Minigame.MinigameStartEvent -= OnMinigameStart;
         Minigame.MinigameEndEvent -= OnMinigameEnd;
         Minigame.GainedColorEvent -= OnGainedColor;
+
+        PauseGame.PauseMenuOpenedEvent -= OnPauseMenuOpened;
+        PauseGame.PauseMenuClosedEvent -= OnPauseMenuClosed;
     }
 }
