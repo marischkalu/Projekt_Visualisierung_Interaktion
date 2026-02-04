@@ -7,6 +7,8 @@ public class DissolveRevealOnTouch : MonoBehaviour
     [SerializeField] private Renderer _renderer;
     private Rigidbody _rigidbody;
 
+    private Color _dissolveColor = Color.clear;
+
     [Header("Trigger Settings")]
     [SerializeField] private string _interactorTag = "Interactor";
 
@@ -74,7 +76,15 @@ public class DissolveRevealOnTouch : MonoBehaviour
         if (_started) return;
         if (!other.CompareTag(_interactorTag)) return;
 
-        _started = true;
+        Debug.Log("cccaec");
+        
+        if (other.gameObject.TryGetComponent<SplashBehaviour>(out SplashBehaviour splash))
+        {
+            _dissolveColor = splash.SplashColor;
+            Debug.Log("Avhaoev");
+        }
+
+        //_started = true;
         _rigidbody.isKinematic = false;
 
         // Lock the reveal center at the point of interaction
@@ -83,7 +93,9 @@ public class DissolveRevealOnTouch : MonoBehaviour
 
         // Start reveal from a small radius
         _radius = _startRadius;
-        ApplyProperties();
+
+        _renderer.materials[1].color = _dissolveColor;
+        //ApplyProperties();
     }
 
     private void Update()
@@ -108,6 +120,7 @@ public class DissolveRevealOnTouch : MonoBehaviour
 
     private void ApplyProperties()
     {
+
         _renderer.GetPropertyBlock(_materialPropertyBlock);
         _materialPropertyBlock.SetVector(_PositionID, _center);
         _materialPropertyBlock.SetFloat(_RadiusID, _radius);

@@ -3,11 +3,13 @@ using System.Collections;
 
 public class SplashBehaviour : MonoBehaviour
 {
+    public Color SplashColor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(DestroyGameObject());
-        
+        GetComponent<Renderer>().material.color = SplashColor;
+        gameObject.tag = "Interactor";
     }
 
     // Update is called once per frame
