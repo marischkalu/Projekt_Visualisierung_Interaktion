@@ -17,6 +17,7 @@ public class GroundZero : MonoBehaviour
 
     }
 
+
     void OnTriggerEnter(Collider other)
     {
         int collisionLayerMask = 1 << other.gameObject.layer;
@@ -24,7 +25,5 @@ public class GroundZero : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
-
     }
 }

@@ -1781,7 +1781,6 @@ GameObject:
   m_Component:
   - component: {fileID: 431433097}
   - component: {fileID: 431433096}
-  - component: {fileID: 431433101}
   - component: {fileID: 431433095}
   - component: {fileID: 431433099}
   - component: {fileID: 431433100}
@@ -1943,27 +1942,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!114 &431433101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431433094}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e850120bc47b2a43975e0020afdde43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrushVFXShooter
-  _camera: {fileID: 431433096}
-  _brushTip: {fileID: 2129718153}
-  _range: 25
-  _strokePrefab: {fileID: 8921638210429611948, guid: 1303eea1d3417e147b4a8c2649ec452d,
-    type: 3}
-  _strokeSpeed: 18
-  _strokeLife: 0.25
-  _impactPrefab: {fileID: 7191708212077301520, guid: 00ae61a19124fb24db23e3a62188866a,
-    type: 3}
 --- !u!1 &477131007
 GameObject:
   m_ObjectHideFlags: 0
@@ -8014,7 +7992,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f3515db582308d34ea4162c77f38b4ec,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13031,6 +13009,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stroke Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063855041255689101, guid: 1303eea1d3417e147b4a8c2649ec452d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921638210429611948, guid: 1303eea1d3417e147b4a8c2649ec452d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

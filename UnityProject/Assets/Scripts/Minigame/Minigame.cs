@@ -7,10 +7,11 @@ public class Minigame : MonoBehaviour
 {
     public static event Action MinigameStartEvent;
     public static event Action MinigameEndEvent;
-    public static event Action GainedBrushEvent;
+    public static event Action<Color[]> GainedColorEvent;
     //private bool _playerInMinigameArea;
     private bool _minigameIsActive;
     private bool _minigameIsCompleted = false;
+    private bool _isFirstPlay = true;
 
     [SerializeField] private Canvas _canvas;
     [SerializeField] private Image _hint;
@@ -22,18 +23,12 @@ public class Minigame : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ColorBottle.FinalizeEvent += OnFinalize;
+        ResetMinigame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.E) && _playerInMinigameArea && !_minigameIsActive && !_minigameIsCompleted)
-        //{
-        //    ResetMinigame();
-        //    MinigameStartEvent?.Invoke();
-        //    _minigameIsActive = true;
-        //}
 
         if (Input.GetKeyDown(_minigameKey))
         {
@@ -48,9 +43,10 @@ public class Minigame : MonoBehaviour
         {
             if (!_minigameIsCompleted)
             {
-                ResetMinigame();
+                ActivateMinigame();
                 MinigameStartEvent?.Invoke();
                 _minigameIsActive = true;
+                _isFirstPlay = false;
             }
                 
         }
@@ -62,22 +58,27 @@ public class Minigame : MonoBehaviour
         }
     }
 
-    void OnFinalize()
+    public void OnFinalize()
     {
-        foreach (ColorBottle bottle in _colorBottles)
-        {
-            if (!bottle.IsFinalized) return;
-        }
         MinigameResult();
     }
 
     void MinigameResult()
     {
-        bool gainedBrush = CheckCombination();
-        if (gainedBrush) GainedBrushEvent?.Invoke();
-        _resultPositive.enabled = gainedBrush;
-        _resultNegative.enabled = !gainedBrush;
-        _minigameIsCompleted = gainedBrush;
+        bool gainedColor = CheckCombination();
+
+        Color[] colors = new Color[_colorBottles.Count];
+        for (int i = 0; i < _colorBottles.Count; i++)
+        {
+            colors[i] = _colorBottles[i].CorrectColor;
+        }
+
+        if (gainedColor) GainedColorEvent?.Invoke(colors);
+        _resultPositive.enabled = gainedColor;
+        _resultNegative.enabled = !gainedColor;
+        _minigameIsCompleted = gainedColor;
+
+        ResetMinigame();
     }
 
     public void MinigameEnd()
@@ -86,16 +87,6 @@ public class Minigame : MonoBehaviour
         _minigameIsActive = false;
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag != "Player") return;
-    //    _playerInMinigameArea = true;
-    //}
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.tag != "Player") return;
-    //    _playerInMinigameArea = false;
-    //}
 
     void ResetMinigame()
     {
@@ -103,8 +94,12 @@ public class Minigame : MonoBehaviour
         {
             bottle.ResetBottle();
         }
+    }
 
-        _hint.enabled = true;
+    void ActivateMinigame()
+    {
+
+        if (_isFirstPlay) _hint.enabled = true;
         _resultPositive.enabled = false;
         _resultNegative.enabled = false;
         _canvas.enabled = true;
@@ -135,6 +130,5 @@ public class Minigame : MonoBehaviour
 
     void OnDestroy()
     {
-        ColorBottle.FinalizeEvent -= OnFinalize;
     }
 }

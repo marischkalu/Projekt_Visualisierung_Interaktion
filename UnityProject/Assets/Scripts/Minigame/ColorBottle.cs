@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ColorBottle : MonoBehaviour
 {
 
-    public static event Action FinalizeEvent;
 
     private int _maxContentCount = 5;
     public bool IsFinalized;
@@ -68,7 +67,7 @@ public class ColorBottle : MonoBehaviour
     {
         IsFinalized = true;
         if (BottleManager.SelectedBottle == this) BottleManager.DeselectBottle();
-        FinalizeEvent?.Invoke();
+        //FinalizeEvent?.Invoke();
     }
 
     public void MixFlask()
