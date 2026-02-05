@@ -6946,16 +6946,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 693302565381471428, guid: e6cf500453c2c054c9730e405d273580,
+        type: 3}
+      propertyPath: m_text
+      value: 'Gallery
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 705344898703767530, guid: e6cf500453c2c054c9730e405d273580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1207755070405188567, guid: e6cf500453c2c054c9730e405d273580,
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 1310965166648072703, guid: e6cf500453c2c054c9730e405d273580,
+    - target: {fileID: 2100660599121425326, guid: e6cf500453c2c054c9730e405d273580,
         type: 3}
-      propertyPath: _levelManager
-      value: 
-      objectReference: {fileID: 1180319245}
+      propertyPath: m_Name
+      value: GalleryButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727756284234087468, guid: e6cf500453c2c054c9730e405d273580,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToGallery
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370182949552121528, guid: e6cf500453c2c054c9730e405d273580,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012086475265150553, guid: e6cf500453c2c054c9730e405d273580,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -10,16 +10,15 @@ public class StartMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log($"{LoadLevel()[0]}, {LoadLevel()[1]}, {LoadLevel()[2]}");
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.visible = true;
+
         _isGameStateEmpty = Array.IndexOf(LoadLevel(), true) < 0;
 
         if (!_isGameStateEmpty) return;
 
-        Image buttonImage = _loadGameButton.GetComponent<Image>();
-        Color buttonColor = buttonImage.color;
-        buttonColor.a = 0.3f;
-        buttonImage.color = buttonColor;
-        
+        _loadGameButton.interactable = false;
+
     }
 
     // Update is called once per frame
@@ -36,7 +35,6 @@ public class StartMenu : MonoBehaviour
 
     public void LoadGame()
     {
-        if (_isGameStateEmpty) return;
         SceneManager.LoadScene("Gallery");
     }
 
