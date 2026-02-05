@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System;
+[Obsolete("Not used any more", true)]
 public class PortalSoundController : MonoBehaviour
 {
     // ===================== REFS =====================

@@ -4,7 +4,8 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Unity.Cinemachine;
 using UnityEngine.SceneManagement;
-
+using System;
+[Obsolete("Not used any more", true)]
 public class PortalTransitionTrigger : MonoBehaviour
 {
     // ===================== REFS =====================
