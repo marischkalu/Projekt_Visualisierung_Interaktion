@@ -4,13 +4,12 @@ public class LevelPortal : MonoBehaviour
 {
     [SerializeField] private int _thisLevel;
     private int _thisLevelNormalized;
-    private Renderer _renderer;
+    [SerializeField] private GameObject _rippleEffectObject;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _thisLevelNormalized = _thisLevel - 1;
-        _renderer = GetComponent<Renderer>();
-        if (_renderer != null) ChangeAvailability(_renderer, IsLevelAvailable());
+        if (_rippleEffectObject != null) ChangeAvailability(_rippleEffectObject, IsLevelAvailable());
     }
 
     // Update is called once per frame
@@ -46,10 +45,12 @@ public class LevelPortal : MonoBehaviour
         return true;
     }
 
-    void ChangeAvailability(Renderer renderer, bool isAvailable)
+    void ChangeAvailability(GameObject rippleGameObject, bool isAvailable)
     {
-        renderer.material.color = Color.red;
+        //renderer.material.color = Color.red;
+        rippleGameObject.SetActive(false);
         if (!isAvailable) return;
-        renderer.material.color = Color.green;
+        rippleGameObject.SetActive(true);
+        //renderer.material.color = Color.green;
     }
 }

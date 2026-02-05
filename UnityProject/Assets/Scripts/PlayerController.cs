@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
-
+    [SerializeField] private Material _orbMaterial;
 
     [SerializeField] private float _orbThrowForce = 400f;
     [SerializeField] private float _colorThrowForce = 800f;
@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
     private float _crouchHeight = 1f;
     private float _crouchSpeed = 3f;
 
-    private bool _canMove = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -129,13 +128,13 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = _canMove ? (isRunning ? _runSpeed : _walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = _canMove ? (isRunning ? _runSpeed : _walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        bool isRunning = _characterController.isGrounded ? Input.GetKey(KeyCode.LeftShift) : false;
+        float curSpeedX = (isRunning ? _runSpeed : _walkSpeed) * Input.GetAxis("Vertical");
+        float curSpeedY = (isRunning ? _runSpeed : _walkSpeed) * Input.GetAxis("Horizontal");
         float movementDirectionY = _moveDirection.y;
         _moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && _canMove && _characterController.isGrounded)
+        if (Input.GetButton("Jump") && _characterController.isGrounded)
         {
             _moveDirection.y = _jumpPower;
         }
@@ -149,7 +148,7 @@ public class PlayerController : MonoBehaviour
             _moveDirection.y -= _gravity * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.R) && _canMove)
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             _characterController.height = _crouchHeight;
             _walkSpeed = _crouchSpeed;
@@ -165,17 +164,14 @@ public class PlayerController : MonoBehaviour
 
         _characterController.Move(_moveDirection * Time.deltaTime);
 
-        if (_canMove)
-        {
-            _rotationX += -Input.GetAxis("Mouse Y") * _lookSpeed;
-            _rotationX = Mathf.Clamp(_rotationX, -_lookXLimit, _lookXLimit);
-            _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * _lookSpeed, 0);
-        }
+        _rotationX += -Input.GetAxis("Mouse Y") * _lookSpeed;
+        _rotationX = Mathf.Clamp(_rotationX, -_lookXLimit, _lookXLimit);
+        _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * _lookSpeed, 0);
     }
 
 
-        void UseBrush(Color brushColor)
+    void UseBrush(Color brushColor)
     {
         GameObject splash = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         splash.GetComponent<Collider>().isTrigger = true;
@@ -208,7 +204,7 @@ public class PlayerController : MonoBehaviour
         if (_orbCount < 1) return;
 
         GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        orb.GetComponent<Renderer>().material.color = Color.green;
+        if (_orbMaterial != null) orb.GetComponent<Renderer>().material = _orbMaterial;
         orb.transform.position = _camera.transform.position + _camera.transform.forward.normalized * 2;
         orb.transform.localScale = new Vector3(
             0.5f,

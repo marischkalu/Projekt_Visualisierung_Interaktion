@@ -1,91 +1,102 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Book : MonoBehaviour
 {
-    [SerializeField] float pageSpeed = 0.1f;
-    [SerializeField] List<Transform> pages;
-    int index = -1;
-    bool rotate = false;
-    [SerializeField] GameObject backButton;
-    [SerializeField] GameObject forwardButton;
+    [SerializeField] private float _pageSpeed = 0.1f;
+    [SerializeField] private List<Transform> _bookPages;
+    private int _pageIndex = 0;
+    private bool _isRotating = false;
+    [SerializeField] private Button _backButton;
+    [SerializeField] private Button _forwardButton;
 
-    private void Start()
+    [SerializeField] private Button _finishButton;
+    [SerializeField] private Button _skipButton;
+
+    private bool _skipButtonDisappeared = false;
+    void Start()
     {
         InitialState();
+        _finishButton.gameObject.SetActive(false);
     }
 
-    public void InitialState()
+    void InitialState()
     {
-        for (int i = 0; i < pages.Count; i++)
+        for (int i = 0; i < _bookPages.Count; i++)
         {
-            pages[i].transform.localRotation = Quaternion.Euler(0, 0, 0);
+            _bookPages[i].transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        pages[0].SetAsLastSibling();
-        backButton.SetActive(false);
+        _bookPages[0].SetAsLastSibling();
+        _backButton.gameObject.SetActive(false);
     }
 
     public void RotateForward()
     {
-        if (rotate == true) { return; }
-        index++;
+        if (_isRotating) return;
+        _pageIndex++;
         float angle = -180;
-        ForwardButtonActions();
-        pages[index].SetAsLastSibling();
+        ButtonVisibility();
+        _bookPages[_pageIndex - 1].SetAsLastSibling();
         StartCoroutine(Rotate(angle, true));
-    }
-
-    public void ForwardButtonActions()
-    {
-        if (backButton.activeInHierarchy == false)
-        {
-            backButton.SetActive(true);
-        }
-        if (index == pages.Count - 1)
-        {
-            forwardButton.SetActive(false);
-        }
     }
 
     public void RotateBack()
     {
-        if (rotate == true) { return; }
+        if (_isRotating) return;
+        _pageIndex--;
         float angle = 0;
-        pages[index].SetAsLastSibling();
-        BackButtonActions();
+        ButtonVisibility();
+        _bookPages[_pageIndex].SetAsLastSibling();
         StartCoroutine(Rotate(angle, false));
     }
 
-    public void BackButtonActions()
+    void ButtonVisibility()
     {
-        if (forwardButton.activeInHierarchy == false)
+        Debug.Log(_pageIndex);
+
+        if (_pageIndex == _bookPages.Count - 1)
         {
-            forwardButton.SetActive(true);
+            _forwardButton.gameObject.SetActive(false);
+            _finishButton.gameObject.SetActive(true);
+
+            if (!_skipButtonDisappeared)
+            {
+                _skipButton.gameObject.SetActive(false);
+                _skipButtonDisappeared = true;
+            }
         }
-        if (index - 1 == -1)
+        else
         {
-            backButton.SetActive(false);
+            _forwardButton.gameObject.SetActive(true);
+            _finishButton.gameObject.SetActive(false);
+        }
+
+        if (_pageIndex == 0)
+        {
+            _backButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            _backButton.gameObject.SetActive(true);
         }
     }
+
 
     IEnumerator Rotate(float angle, bool forward)
     {
         float value = 0f;
         while (true)
         {
-            rotate = true;
+            _isRotating = true;
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
-            value += Time.deltaTime * pageSpeed;
-            pages[index].localRotation = Quaternion.Slerp(pages[index].localRotation, targetRotation, value);
-            float angle1 = Quaternion.Angle(pages[index].localRotation, targetRotation);
+            value += Time.deltaTime * _pageSpeed;
+            _bookPages[forward? _pageIndex - 1 : _pageIndex].localRotation = Quaternion.Slerp(_bookPages[forward ? _pageIndex - 1 : _pageIndex].localRotation, targetRotation, value);
+            float angle1 = Quaternion.Angle(_bookPages[forward ? _pageIndex - 1 : _pageIndex].localRotation, targetRotation);
             if (angle1 < 0.1f)
             {
-                if (forward == false)
-                {
-                    index--;
-                }
-                rotate = false;
+                _isRotating = false;
                 break;
             }
             yield return null;

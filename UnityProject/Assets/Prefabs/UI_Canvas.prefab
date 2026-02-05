@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallUI
   _ballsParent: {fileID: 6066690082516149293}
-  _fullColor: {r: 0, g: 1, b: 0, a: 1}
+  _fullColor: {r: 1, g: 1, b: 1, a: 1}
   _emptyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   _ammoOrbHighlight: {fileID: 2677736186575366609}
 --- !u!1 &7336574791856978108
@@ -235,7 +235,6 @@ GameObject:
   - component: {fileID: 8379608253452296930}
   - component: {fileID: 7109764182547495739}
   - component: {fileID: 9200644465484505025}
-  - component: {fileID: 6370106947829584528}
   m_Layer: 5
   m_Name: UI_Canvas
   m_TagString: Untagged
@@ -328,27 +327,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6370106947829584528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7336574791856978108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c552155dce2ea9a4b915208e4aaa367b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Minigame
-  _canvas: {fileID: 0}
-  _hint: {fileID: 0}
-  _resultPositive: {fileID: 0}
-  _resultNegative: {fileID: 0}
-  _colorBottles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _minigameKey: 102
 --- !u!1 &7523767445073011537
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,11 +592,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864890204110352149, guid: deb41a23471580545babb93a41c42422,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6370106947829584528}
-    - target: {fileID: 5864890204110352149, guid: deb41a23471580545babb93a41c42422,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnMinigameButtonPressed
       objectReference: {fileID: 0}
@@ -698,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 1, b: 0, a: 1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 0
 --- !u!1 &703082080746040861 stripped
@@ -725,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 1, g: 0, b: 0, a: 1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 0
 --- !u!4 &6066690082516149293 stripped
