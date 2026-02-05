@@ -11,6 +11,7 @@ public class ObjectColorSystem : MonoBehaviour
 
     [Header("Trigger Settings")]
     [SerializeField] private string _interactorTag = "Interactor";
+    [SerializeField] private int _dynamicMarerialIndex;
 
 
     void Start()
@@ -47,7 +48,7 @@ public class ObjectColorSystem : MonoBehaviour
         }
         _rigidbody.isKinematic = false;
 
-        _renderer.materials[1].color = _dissolveColor;
+        _renderer.materials[_dynamicMarerialIndex].color = _dissolveColor;
     }
 
     private void Update()
