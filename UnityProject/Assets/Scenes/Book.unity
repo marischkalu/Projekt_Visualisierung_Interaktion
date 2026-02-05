@@ -1911,13 +1911,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d0f992661c42a4a81371de02d58602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Book
-  pageSpeed: 0.1
-  pages:
+  _pageSpeed: 0.1
+  _bookPages:
   - {fileID: 1006954246}
   - {fileID: 1107461677}
   - {fileID: 433888182}
-  backButton: {fileID: 2069434761}
-  forwardButton: {fileID: 1870154026}
+  - {fileID: 1332133014}
+  _backButton: {fileID: 2069434763}
+  _forwardButton: {fileID: 1870154028}
+  _finishButton: {fileID: 188126388}
+  _skipButton: {fileID: 135525230}
 --- !u!224 &1784751441
 RectTransform:
   m_ObjectHideFlags: 0
