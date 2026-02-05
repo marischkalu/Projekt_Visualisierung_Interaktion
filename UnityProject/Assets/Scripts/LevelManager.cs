@@ -13,14 +13,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // DEBUGGING: Keys (EST+R) -> DELETE GAME (RESET TO LEVEL 1)
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.T))
-        {
-            bool[] levelCompleted = new bool[SaveSystem.TotalLevelCount];
-            SaveLevel(levelCompleted);
-            LoadGalleryScene();
-        }
     }
 
     public void LevelCompleted()
@@ -30,11 +22,6 @@ public class LevelManager : MonoBehaviour
         gameState[_thisLevelNormalized] = true;
         SaveLevel(gameState);
 
-        LoadGalleryScene();
-    }
-
-    public void LevelEscape()
-    {
         LoadGalleryScene();
     }
 
@@ -51,6 +38,6 @@ public class LevelManager : MonoBehaviour
 
     void LoadGalleryScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Gallery");
     }
 }

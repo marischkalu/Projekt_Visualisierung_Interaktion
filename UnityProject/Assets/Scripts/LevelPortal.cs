@@ -22,7 +22,7 @@ public class LevelPortal : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!IsLevelAvailable()) return;
-        SceneManager.LoadScene(_thisLevel);
+        SceneManager.LoadScene(_thisLevel + 2);
     }
 
     bool[] LoadLevel()
