@@ -84,6 +84,7 @@ public class Minigame : MonoBehaviour
     public void MinigameEnd()
     {
         MinigameEndEvent?.Invoke();
+        _canvas.enabled = false;
         _minigameIsActive = false;
     }
 

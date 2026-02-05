@@ -198,6 +198,18 @@ Transform:
   - {fileID: 1649145792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &141674386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9155527921430440702, guid: 0888e26c6e407354692759a171445679,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863854059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c552155dce2ea9a4b915208e4aaa367b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigame
 --- !u!1001 &195009324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4573,10 +4585,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 3.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141674386}
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MinigameEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Minigame, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2203507731194384468, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_Name
       value: MinigameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141674386}
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MinigameEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Minigame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
@@ -4677,6 +4749,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 141674386}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: OnFinalize
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

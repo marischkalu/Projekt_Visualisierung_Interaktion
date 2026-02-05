@@ -734,41 +734,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: _hint
-      value: 
-      objectReference: {fileID: 1117315414}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: _canvas
-      value: 
-      objectReference: {fileID: 1117315408}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: _resultNegative
-      value: 
-      objectReference: {fileID: 1117315412}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: _resultPositive
-      value: 
-      objectReference: {fileID: 1117315413}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: '_colorBottles.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1117315411}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: '_colorBottles.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1117315410}
-    - target: {fileID: 6370106947829584528, guid: 210d262dccbc86346923789ed26c3039,
-        type: 3}
-      propertyPath: '_colorBottles.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1117315409}
     - target: {fileID: 7336574791856978108, guid: 210d262dccbc86346923789ed26c3039,
         type: 3}
       propertyPath: m_Name
@@ -3336,16 +3301,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 906092165325534832, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1256057277}
     - target: {fileID: 2203507731194384468, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_Name
       value: MinigameCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3731882687617749013, guid: 0888e26c6e407354692759a171445679,
+    - target: {fileID: 2724482811886281440, guid: 0888e26c6e407354692759a171445679,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1256057277}
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3446,89 +3416,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1256057277}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0888e26c6e407354692759a171445679, type: 3}
---- !u!223 &1117315408 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3731882687617749013, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117315407}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1117315409 stripped
+--- !u!114 &1256057277 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9161428435727858887, guid: 0888e26c6e407354692759a171445679,
+  m_CorrespondingSourceObject: {fileID: 9155527921430440702, guid: 0888e26c6e407354692759a171445679,
     type: 3}
   m_PrefabInstance: {fileID: 1117315407}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446e7bb4a91a1c04e949dce1d5b65ba0, type: 3}
+  m_Script: {fileID: 11500000, guid: c552155dce2ea9a4b915208e4aaa367b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorBottle
---- !u!114 &1117315410 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117315407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446e7bb4a91a1c04e949dce1d5b65ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorBottle
---- !u!114 &1117315411 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117315407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446e7bb4a91a1c04e949dce1d5b65ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorBottle
---- !u!114 &1117315412 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8810080346090054445, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117315407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &1117315413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6047880649989371629, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117315407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &1117315414 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7819256425727199787, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1117315407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_EditorClassIdentifier: Assembly-CSharp::Minigame
 --- !u!1001 &1259459613
 PrefabInstance:
   m_ObjectHideFlags: 0
