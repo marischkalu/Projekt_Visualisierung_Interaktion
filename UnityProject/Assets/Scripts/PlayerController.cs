@@ -3,6 +3,7 @@ using System;
 using UnityEngine.UIElements;
 using UnityEngine.Rendering;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     //public AudioSource walkAudio; // Sounddesign - Walking Sound
@@ -19,54 +20,64 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
-    [SerializeField] private LayerMask _floorLayer;
-    private float _horizontalMouse;
-    private float _verticalMouse;
-    private float _horizontalInput;
-    private float _verticalInput;
-    private float _pitch = 0f;
-    [SerializeField] private float _rotationSpeedVertical = 500f;
-    [SerializeField] private float _rotationSpeedHorizontal = 500f;
-    [SerializeField] private float _movementSpeed = 0.2f;
-    [SerializeField] private float _airMovementSpeed = 0.04f;
-    [SerializeField] private float _jumpForce = 300f;
-    [SerializeField] private float _orbThrowForce = 200f;
-    [SerializeField] private float _colorThrowForce = 800f;
 
-    private bool _isGrounded = false;
+
+    [SerializeField] private float _orbThrowForce = 400f;
+    [SerializeField] private float _colorThrowForce = 800f;
 
     private int _orbCount = 0;
 
-    private Color _colorOne = Color.clear;
-    private Color _colorTwo = Color.clear;
+    //private Color _colorOne = Color.clear;
+    //private Color _colorTwo = Color.clear;
+    private Color _colorOne = Color.red;
+    private Color _colorTwo = Color.blue;
+
+
+    private Vector3 _moveDirection = Vector3.zero;
+    private CharacterController _characterController;
+    private float _rotationX = 0;
+    private float _walkSpeed = 6f;
+    private float _runSpeed = 12f;
+    private float _jumpPower = 7f;
+    private float _gravity = 10f;
+    private float _lookSpeed = 2f;
+    private float _lookXLimit = 45f;
+    private float _defaultHeight = 2f;
+    private float _crouchHeight = 1f;
+    private float _crouchSpeed = 3f;
+
+    private bool _canMove = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
+
         _rigidbody = GetComponent<Rigidbody>();
+        _characterController = GetComponent<CharacterController>();
         Collectible.CollectibleCollisionEvent += OnCollectibleCollision;
         Minigame.MinigameStartEvent += OnMinigameStart;
         Minigame.MinigameEndEvent += OnMinigameEnd;
         Minigame.GainedColorEvent += OnGainedColor;
+
+        PauseGame.PauseMenuOpenedEvent += OnPauseMenuOpened;
+        PauseGame.PauseMenuClosedEvent += OnPauseMenuClosed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _horizontalMouse = Input.GetAxis("Mouse X"); // Left/Right
-        _verticalMouse = Input.GetAxis("Mouse Y");   // Up/Down
-        _horizontalInput = Input.GetAxis("Horizontal"); // A/D
-        _verticalInput = Input.GetAxis("Vertical");   // W/S
 
         switch (CurrentPlayerState)
         {
             case PlayerState.Active:
 
-                RotatePlayer();
-                
+                //RotatePlayer();
+
                 MoveAndJump();
 
-                if(Input.GetAxis("Mouse ScrollWheel") != 0f)
+                if (Input.GetAxis("Mouse ScrollWheel") != 0f)
                 {
                     SwitchAmmo();
                 }
@@ -94,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
                 break;
 
-            case PlayerState.Passive:   
+            case PlayerState.Passive:
                 break;
         }
 
@@ -112,56 +123,61 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void RotatePlayer()
-    {
-
-        Quaternion deltaRotation = Quaternion.Euler(
-            0f,
-            _horizontalMouse * _rotationSpeedHorizontal * Time.deltaTime,
-            0f
-        );
-        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
-
-        float inputPitch = _verticalMouse * _rotationSpeedVertical * Time.deltaTime * -1f;
-        _pitch += inputPitch;
-
-        _pitch = Mathf.Clamp(_pitch, -80f, 80f);
-        _camera.transform.localRotation = Quaternion.Euler(
-            _pitch,
-            0f,
-            0f
-        );
-
-    }
 
     void MoveAndJump()
     {
-        Vector3 oldPosition = _rigidbody.transform.position;
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 right = transform.TransformDirection(Vector3.right);
 
-        // Move Slower while in the air
-        Vector3 newPostitionForward = _rigidbody.transform.forward * _verticalInput * (_isGrounded ? _movementSpeed : _airMovementSpeed);
-        Vector3 newPostitionRight = _rigidbody.transform.right * _horizontalInput * (_isGrounded? _movementSpeed : _airMovementSpeed);
-       
-        Vector3 newPosition = oldPosition + newPostitionForward + newPostitionRight;
-        
-        _rigidbody.MovePosition(
-            newPosition
-        );
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        float curSpeedX = _canMove ? (isRunning ? _runSpeed : _walkSpeed) * Input.GetAxis("Vertical") : 0;
+        float curSpeedY = _canMove ? (isRunning ? _runSpeed : _walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        float movementDirectionY = _moveDirection.y;
+        _moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        if (Input.GetButton("Jump") && _canMove && _characterController.isGrounded)
         {
-            _rigidbody.AddForce(transform.up * _jumpForce);
-            _rigidbody.AddForce(newPostitionForward * _jumpForce * 4f); // Apply Jump Force in Move Direction
-            _rigidbody.AddForce(newPostitionRight * _jumpForce * 2f);
+            _moveDirection.y = _jumpPower;
+        }
+        else
+        {
+            _moveDirection.y = movementDirectionY;
+        }
+
+        if (!_characterController.isGrounded)
+        {
+            _moveDirection.y -= _gravity * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.R) && _canMove)
+        {
+            _characterController.height = _crouchHeight;
+            _walkSpeed = _crouchSpeed;
+            _runSpeed = _crouchSpeed;
+
+        }
+        else
+        {
+            _characterController.height = _defaultHeight;
+            _walkSpeed = 6f;
+            _runSpeed = 12f;
+        }
+
+        _characterController.Move(_moveDirection * Time.deltaTime);
+
+        if (_canMove)
+        {
+            _rotationX += -Input.GetAxis("Mouse Y") * _lookSpeed;
+            _rotationX = Mathf.Clamp(_rotationX, -_lookXLimit, _lookXLimit);
+            _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * _lookSpeed, 0);
         }
     }
 
 
-    void UseBrush(Color brushColor)
+        void UseBrush(Color brushColor)
     {
         GameObject splash = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        splash.tag = "Interactor";
-        splash.GetComponent<Renderer>().material.color = brushColor;
         splash.GetComponent<Collider>().isTrigger = true;
         splash.transform.position = _camera.transform.position + _camera.transform.forward.normalized * 2;
         splash.transform.localScale = new Vector3(
@@ -173,6 +189,8 @@ public class PlayerController : MonoBehaviour
         // Add a standard Rigidbody
         Rigidbody rb = splash.AddComponent<Rigidbody>();
         SplashBehaviour splashBehaviour = splash.AddComponent<SplashBehaviour>();
+
+        splashBehaviour.SplashColor = brushColor;
 
         rb.AddForce(_camera.transform.forward * _colorThrowForce);
     }
@@ -219,12 +237,36 @@ public class PlayerController : MonoBehaviour
 
     void OnMinigameStart()
     {
-        CurrentPlayerState = PlayerState.Passive;
+        LockPlayer();
     }
 
     void OnMinigameEnd()
     {
+        UnlockPlayer();
+    }
+
+    void OnPauseMenuOpened()
+    {
+        LockPlayer();
+    }
+
+    void OnPauseMenuClosed()
+    {
+        UnlockPlayer();
+    }
+
+    void LockPlayer()
+    {
+        CurrentPlayerState = PlayerState.Passive;
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.visible = true;
+    }
+    
+    void UnlockPlayer()
+    {
         CurrentPlayerState = PlayerState.Active;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
     }
     
     void OnGainedColor(Color[] colors)
@@ -235,29 +277,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("You gained color.");
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        int collisionLayerMask = 1 << collision.gameObject.layer;
-        if ((collisionLayerMask & _floorLayer) != 0)
-        {
-            _isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        int collisionLayerMask = 1 << collision.gameObject.layer;
-        if ((collisionLayerMask & _floorLayer) != 0)
-        {
-            _isGrounded = false;
-        }
-    }
     void OnDestroy()
     {
         Collectible.CollectibleCollisionEvent -= OnCollectibleCollision;
         Minigame.MinigameStartEvent -= OnMinigameStart;
         Minigame.MinigameEndEvent -= OnMinigameEnd;
         Minigame.GainedColorEvent -= OnGainedColor;
-    }
 
+        PauseGame.PauseMenuOpenedEvent -= OnPauseMenuOpened;
+        PauseGame.PauseMenuClosedEvent -= OnPauseMenuClosed;
+    }
 }
