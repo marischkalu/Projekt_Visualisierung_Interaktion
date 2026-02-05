@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlidePanel
   panel: {fileID: 4897231769326271956}
+  arrow: {fileID: 0}
   hiddenY: -46
   shownY: 19
 --- !u!114 &6215637373135709846
@@ -292,11 +293,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6309419563237545275}
-  - {fileID: 8647020737939577499}
   - {fileID: 4860480153016994768}
   - {fileID: 2038917661103898292}
   - {fileID: 927913415442939026}
   - {fileID: 7650424696595189925}
+  - {fileID: 8647020737939577499}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -712,7 +713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eb3e0766d3aaf448eec887a44fc568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PanelToggle
-  panel: {fileID: 4024858709474892437}
+  _panel: {fileID: 0}
+  _togglePanelKey: 101
 --- !u!1 &4688269555715048768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eb3e0766d3aaf448eec887a44fc568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PanelToggle
-  panel: {fileID: 9056816134285646894}
+  _panel: {fileID: 0}
+  _togglePanelKey: 101
 --- !u!1 &7845733344659757144
 GameObject:
   m_ObjectHideFlags: 0
