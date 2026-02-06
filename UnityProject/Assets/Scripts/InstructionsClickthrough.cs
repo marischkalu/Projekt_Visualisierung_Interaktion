@@ -16,11 +16,10 @@ public class InstructionsClickthrough : MonoBehaviour
     [SerializeField] private Button _previousButton;
     [SerializeField] private Button _skipButton;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         InstructionsStartEvent?.Invoke();
-
         _texts = _textsParent.GetComponentsInChildren<TMP_Text>(true);
 
     }

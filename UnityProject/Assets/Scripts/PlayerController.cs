@@ -47,9 +47,14 @@ public class PlayerController : MonoBehaviour
     private float _crouchHeight = 1f;
     private float _crouchSpeed = 3f;
 
+    void Awake()
+    {
+        InstructionsClickthrough.InstructionsStartEvent += LockPlayer;
+        InstructionsClickthrough.InstructionsEndEvent += UnlockPlayer;
+    }
     void Start()
     {
-
+       
         _rigidbody = GetComponent<Rigidbody>();
         _characterController = GetComponent<CharacterController>();
         Collectible.CollectibleCollisionEvent += OnCollectibleCollision;
@@ -60,16 +65,12 @@ public class PlayerController : MonoBehaviour
         PauseGame.PauseMenuOpenedEvent += LockPlayer;
         PauseGame.PauseMenuClosedEvent += UnlockPlayer;
 
-        InstructionsClickthrough.InstructionsStartEvent += LockPlayer;
-        InstructionsClickthrough.InstructionsEndEvent += UnlockPlayer;
-
         if (CurrentLevel() == 1) OnLevelOne(); // Add Level One Inventory Color
     }
 
     // Update is called once per frame
     void Update()
     {
-
         SwitchPlayerState();
 
 
@@ -237,14 +238,12 @@ public class PlayerController : MonoBehaviour
 
         _orbCount--;
         UpdateOrbCountEvent?.Invoke(_orbCount);
-        Debug.Log($"Orb Count: {_orbCount}");
     }
 
     void OnCollectibleCollision()
     {
         _orbCount++;
         UpdateOrbCountEvent?.Invoke(_orbCount);
-        Debug.Log($"Orb Count: {_orbCount}");
     }
 
     void LockPlayer()

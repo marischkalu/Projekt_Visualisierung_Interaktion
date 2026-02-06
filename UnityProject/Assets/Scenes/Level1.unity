@@ -4202,7 +4202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   _thisLevel: 1
-  _objectsToPaint: []
+  _objectsToPaint:
+  - {fileID: 1896948147}
+  _objectsToPaintWithMultipleColors: []
 --- !u!1 &1227396376
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,7 +6757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectColorSystem
   _renderer: {fileID: 0}
-  CorrectColor: {r: 0.28235295, g: 0.05490196, b: 0, a: 0}
+  CorrectColor: {r: 0.28235295, g: 0.05490196, b: 0, a: 1}
   AppliedColor: {r: 0, g: 0, b: 0, a: 0}
   _interactorTag: Interactor
   _dynamicMarerialIndex: 1
@@ -7488,13 +7490,18 @@ PrefabInstance:
       objectReference: {fileID: 2517551812427236384}
     - target: {fileID: 1058627699413625321, guid: f8e138f3638b1134297ae7a068ea44d2,
         type: 3}
+      propertyPath: _levelOneInventoryColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058627699413625321, guid: f8e138f3638b1134297ae7a068ea44d2,
+        type: 3}
       propertyPath: _levelOneInventoryColor.g
-      value: 0.05465613
+      value: 0.05490196
       objectReference: {fileID: 0}
     - target: {fileID: 1058627699413625321, guid: f8e138f3638b1134297ae7a068ea44d2,
         type: 3}
       propertyPath: _levelOneInventoryColor.r
-      value: 0.2830189
+      value: 0.28235295
       objectReference: {fileID: 0}
     - target: {fileID: 1168692388651091117, guid: f8e138f3638b1134297ae7a068ea44d2,
         type: 3}
