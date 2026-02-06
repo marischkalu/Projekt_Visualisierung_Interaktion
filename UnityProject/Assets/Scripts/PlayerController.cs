@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private List<Color> _colorInventory = new() {};
     private int _equippedColorIndex = 0;
+    [SerializeField] private Color _levelOneInventoryColor;
 
 
     private Vector3 _moveDirection = Vector3.zero;
@@ -46,8 +47,6 @@ public class PlayerController : MonoBehaviour
     private float _crouchHeight = 1f;
     private float _crouchSpeed = 3f;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
@@ -63,52 +62,15 @@ public class PlayerController : MonoBehaviour
 
         InstructionsClickthrough.InstructionsStartEvent += LockPlayer;
         InstructionsClickthrough.InstructionsEndEvent += UnlockPlayer;
+
+        if (CurrentLevel() == 1) OnLevelOne(); // Add Level One Inventory Color
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        switch (CurrentPlayerState)
-        {
-            case PlayerState.Active:
-
-                //RotatePlayer();
-
-                MoveAndJump();
-
-                if (Input.GetAxis("Mouse ScrollWheel") != 0f)
-                {
-                    SwitchAmmo();
-                }
-
-                switch (CurrentAmmo)
-                {
-                    case Ammo.Orb:
-                        if (Input.GetMouseButtonDown(0))
-                        {
-                            ThrowOrb();
-                        }
-                        break;
-
-                    case Ammo.Color:
-                        if (Input.GetKeyDown(KeyCode.Tab) && !(_colorInventory.Count == 0))
-                        {
-                            _equippedColorIndex = _colorInventory.Count - 1 > _equippedColorIndex ? _equippedColorIndex + 1 : 0;
-                            UpdateHudColorSplashesEvent?.Invoke(_colorInventory[_equippedColorIndex]);
-                        }
-                        if (Input.GetMouseButtonDown(0) && !(_colorInventory.Count == 0))
-                        {
-                            UseBrush();
-                        }
-                        break;
-                }
-
-                break;
-
-            case PlayerState.Passive:
-                break;
-        }
+        SwitchPlayerState();
 
 
         // Sounddesign - Walking Sound
@@ -123,6 +85,23 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
+
+    void SwitchPlayerState()
+    {
+        switch (CurrentPlayerState)
+        {
+            case PlayerState.Active:
+
+                MoveAndJump();
+
+                SwitchAmmoState();
+
+                break;
+
+            case PlayerState.Passive:
+                break;
+        }
+    }
 
 
     void MoveAndJump()
@@ -166,12 +145,54 @@ public class PlayerController : MonoBehaviour
 
         _characterController.Move(_moveDirection * Time.deltaTime);
 
+        RotatePlayer();
+    }
+
+    void RotatePlayer()
+    {
         _rotationX += -Input.GetAxis("Mouse Y") * _lookSpeed;
         _rotationX = Mathf.Clamp(_rotationX, -_lookXLimit, _lookXLimit);
         _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * _lookSpeed, 0);
     }
 
+    void SwitchAmmoState()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        {
+            SwitchAmmo();
+        }
+
+        switch (CurrentAmmo)
+        {
+            case Ammo.Orb:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ThrowOrb();
+                }
+                break;
+
+            case Ammo.Color:
+                if (Input.GetKeyDown(KeyCode.Tab) && !(_colorInventory.Count == 0))
+                {
+                    _equippedColorIndex = _colorInventory.Count - 1 > _equippedColorIndex ? _equippedColorIndex + 1 : 0;
+                    UpdateHudColorSplashesEvent?.Invoke(_colorInventory[_equippedColorIndex]);
+                }
+                if (Input.GetMouseButtonDown(0) && !(_colorInventory.Count == 0))
+                {
+                    UseBrush();
+                }
+                break;
+        }
+    }
+
+    void SwitchAmmo()
+    {
+        // iterates thru Ammo states
+        CurrentAmmo = (Ammo)(((int)CurrentAmmo + 1) % Enum.GetValues(typeof(Ammo)).Length);
+
+        SwitchAmmoEvent?.Invoke();
+    }
 
     void UseBrush()
     {
@@ -193,13 +214,6 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(_camera.transform.forward * _colorThrowForce);
     }
 
-    void SwitchAmmo()
-    {
-        // iterates thru Ammo states
-        CurrentAmmo = (Ammo)(((int)CurrentAmmo + 1) % Enum.GetValues(typeof(Ammo)).Length);
-
-        SwitchAmmoEvent?.Invoke();
-    }
 
     void ThrowOrb()
     {
@@ -257,6 +271,18 @@ public class PlayerController : MonoBehaviour
         UpdateHudColorSplashesEvent?.Invoke(_colorInventory[_equippedColorIndex]);
     }
 
+    int CurrentLevel()
+    {
+        PlayerData data = SaveSystem.LoadLevel();
+        return data.CurrentLevel;
+    }
+
+    void OnLevelOne()
+    {
+        _colorInventory.Add(_levelOneInventoryColor);
+        UpdateHudColorSplashesEvent?.Invoke(_colorInventory[_equippedColorIndex]);
+    }
+
     void OnDestroy()
     {
         Collectible.CollectibleCollisionEvent -= OnCollectibleCollision;
@@ -269,5 +295,6 @@ public class PlayerController : MonoBehaviour
 
         InstructionsClickthrough.InstructionsStartEvent -= LockPlayer;
         InstructionsClickthrough.InstructionsEndEvent -= UnlockPlayer;
+
     }
 }

@@ -39,6 +39,9 @@ public class Minigame : MonoBehaviour
 
     public void OnMinigameButtonPressed()
     {
+        {
+            
+        }
         if (!_minigameIsActive)
         {
             if (!_minigameIsCompleted)

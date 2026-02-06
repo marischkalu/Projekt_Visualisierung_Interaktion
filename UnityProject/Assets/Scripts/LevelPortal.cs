@@ -21,6 +21,7 @@ public class LevelPortal : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!IsLevelAvailable()) return;
+        SaveLevel();
         SceneManager.LoadScene(_thisLevel + 2);
     }
 
@@ -29,7 +30,12 @@ public class LevelPortal : MonoBehaviour
         PlayerData data = SaveSystem.LoadLevel();
         return data.LevelCompleted;
     }
-    
+
+    void SaveLevel()
+    {
+        SaveSystem.SaveLevel(LoadLevel(), _thisLevel);
+    }
+
     // DEBUGGING COLOR CHANGE OF PORTALS
     bool IsLevelAvailable()
     {

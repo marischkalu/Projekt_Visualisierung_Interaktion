@@ -1,10 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class LevelManager : MonoBehaviour
 {
+
     [SerializeField] private int _thisLevel;
+    [SerializeField] ObjectColorSystem[] _objectsToPaint;
     private int _thisLevelNormalized;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         _thisLevelNormalized = _thisLevel - 1;
@@ -17,10 +22,11 @@ public class LevelManager : MonoBehaviour
 
     public void LevelCompleted()
     {
+        if (!AreAllPaintedObjectsCorrect()) return;
         bool[] gameState = LoadLevel();
 
         gameState[_thisLevelNormalized] = true;
-        SaveLevel(gameState);
+        SaveLevel(gameState, 0);
 
         LoadGalleryScene();
     }
@@ -31,13 +37,22 @@ public class LevelManager : MonoBehaviour
         return data.LevelCompleted;
     }
 
-    void SaveLevel(bool[] levelCompleted)
+    void SaveLevel(bool[] levelCompleted, int currentLevel)
     {
-        SaveSystem.SaveLevel(levelCompleted);
+        SaveSystem.SaveLevel(levelCompleted, currentLevel);
     }
 
     void LoadGalleryScene()
     {
         SceneManager.LoadScene("Gallery");
+    }
+
+    bool AreAllPaintedObjectsCorrect()
+    {
+        for(int i = 0; i < _objectsToPaint.Length; i++)
+        {
+            if (!_objectsToPaint[i].AppliedColor.Equals(_objectsToPaint[i].CorrectColor)) return false;
+        }
+        return true;
     }
 }

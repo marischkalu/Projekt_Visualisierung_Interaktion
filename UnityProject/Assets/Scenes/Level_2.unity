@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 224048158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.63, y: 8.93, z: 0.67}
+  m_LocalPosition: {x: -2.63, y: 9.36, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -893,6 +893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   _thisLevel: 2
+  _objectsToPaint:
+  - {fileID: 1649145797}
 --- !u!4 &319318222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 433390f2b132e264aa52e68298a527eb,
@@ -1074,6 +1076,12 @@ MonoBehaviour:
   _nextButton: {fileID: 840214709}
   _previousButton: {fileID: 0}
   _skipButton: {fileID: 719000272}
+--- !u!224 &402206437 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4204204508958218887, guid: 0888e26c6e407354692759a171445679,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863854059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &403567360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1924,6 +1932,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719000270}
   m_CullTransparentMesh: 1
+--- !u!1 &721413111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 721413112}
+  - component: {fileID: 721413115}
+  - component: {fileID: 721413114}
+  - component: {fileID: 721413113}
+  m_Layer: 5
+  m_Name: Mix Bottle Button (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &721413112
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721413111}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 907513471}
+  m_Father: {fileID: 2049184222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 450, y: -195.7963}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &721413113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721413111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 721413114}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1863854063}
+        m_TargetAssemblyTypeName: ColorBottle, Assembly-CSharp
+        m_MethodName: MixFlask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &721413114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721413111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &721413115
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721413111}
+  m_CullTransparentMesh: 1
 --- !u!1001 &752483197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2161,7 +2302,7 @@ PrefabInstance:
         type: 3}
       propertyPath: '_colorBottles.Array.data[2]'
       value: 
-      objectReference: {fileID: 1863854061}
+      objectReference: {fileID: 0}
     - target: {fileID: 7336574791856978108, guid: 210d262dccbc86346923789ed26c3039,
         type: 3}
       propertyPath: m_Name
@@ -2304,6 +2445,155 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1230354912}
   m_LocalEulerAnglesHint: {x: 140.81601, y: -3.4100037, z: -0.6470032}
+--- !u!1 &799798664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799798665}
+  - component: {fileID: 799798669}
+  - component: {fileID: 799798668}
+  - component: {fileID: 799798667}
+  - component: {fileID: 799798666}
+  m_Layer: 5
+  m_Name: Bottle (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &799798665
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799798664}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1140886310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 380, y: 0}
+  m_SizeDelta: {x: 100, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &799798666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799798664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446e7bb4a91a1c04e949dce1d5b65ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorBottle
+  IsFinalized: 0
+  StartColorContent: []
+  ColorContent: []
+  CorrectColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+--- !u!114 &799798667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799798664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 799798668}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 799798666}
+        m_TargetAssemblyTypeName: ColorBottle, Assembly-CSharp
+        m_MethodName: BottleClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &799798668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799798664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &799798669
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799798664}
+  m_CullTransparentMesh: 1
 --- !u!1 &802675449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,6 +2947,142 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 243779683}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &907513470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 907513471}
+  - component: {fileID: 907513473}
+  - component: {fileID: 907513472}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &907513471
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907513470}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721413112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &907513472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907513470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Mix
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 0
+  m_fontSizeMax: 0
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &907513473
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907513470}
+  m_CullTransparentMesh: 1
 --- !u!1001 &980898074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2750,6 +3176,95 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 756eb9f2df5fac342b8c6890c72f2464, type: 3}
+--- !u!1 &1018691057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018691058}
+  - component: {fileID: 1018691061}
+  - component: {fileID: 1018691060}
+  - component: {fileID: 1018691059}
+  m_Layer: 5
+  m_Name: Indicator Bottle (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1018691058
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018691057}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 402206437}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 417.34, y: 165}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1018691059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018691057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1915f05ffc7cd5d4ebaf416714214c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CorrectColorIndicator
+  _colorBottle: {fileID: 799798666}
+--- !u!114 &1018691060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018691057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1018691061
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018691057}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1026882863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2913,6 +3428,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999996, z: 0.0015607525}
   m_Center: {x: 0, y: -4.932444e-17, z: -0.009513496}
+--- !u!114 &1100959479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9155527921430440702, guid: 0888e26c6e407354692759a171445679,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863854059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c552155dce2ea9a4b915208e4aaa367b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigame
 --- !u!1 &1129727424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,6 +3546,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140588801}
   m_CullTransparentMesh: 1
+--- !u!224 &1140886310 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3372497547799974099, guid: 0888e26c6e407354692759a171445679,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863854059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1160577167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4578,6 +5111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectColorSystem
   _renderer: {fileID: 0}
+  CorrectColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+  AppliedColor: {r: 0, g: 0, b: 0, a: 0}
   _interactorTag: Interactor
   _dynamicMarerialIndex: 0
 --- !u!4 &1663869211 stripped
@@ -5168,10 +5703,85 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 737020513083248081, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: _colorBottle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: CorrectColor.b
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: CorrectColor.r
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[0].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[0].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[0].r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[1].b
+      value: 0.5965357
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[1].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[1].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[2].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[2].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[2].g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2203507731194384468, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_Name
       value: MinigameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203507731194384468, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731882687617749013, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
@@ -5226,7 +5836,7 @@ PrefabInstance:
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.77465
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
@@ -5251,12 +5861,12 @@ PrefabInstance:
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -31.09825
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.62575
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092792006647941239, guid: 0888e26c6e407354692759a171445679,
         type: 3}
@@ -5273,9 +5883,109 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: CorrectColor.b
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: CorrectColor.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: CorrectColor.r
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[0].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[0].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267291695502553859, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: StartColorContent.Array.data[0].r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 799798666}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1100959479}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Finalize
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: OnFinalize
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: ColorBottle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753261131770741751, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891397268730044249, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155527921430440702, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: _colorBottles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155527921430440702, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      propertyPath: '_colorBottles.Array.data[2]'
+      value: 
+      objectReference: {fileID: 799798666}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4290137305946963445, guid: 0888e26c6e407354692759a171445679, type: 3}
+    - {fileID: 2652580117405894292, guid: 0888e26c6e407354692759a171445679, type: 3}
+    - {fileID: 6038520716419061432, guid: 0888e26c6e407354692759a171445679, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3372497547799974099, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 799798665}
+    - targetCorrespondingSourceObject: {fileID: 6647711246678272995, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 721413112}
+    - targetCorrespondingSourceObject: {fileID: 4204204508958218887, guid: 0888e26c6e407354692759a171445679,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1018691058}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0888e26c6e407354692759a171445679, type: 3}
 --- !u!223 &1863854060 stripped
@@ -5284,18 +5994,6 @@ Canvas:
     type: 3}
   m_PrefabInstance: {fileID: 1863854059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1863854061 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9161428435727858887, guid: 0888e26c6e407354692759a171445679,
-    type: 3}
-  m_PrefabInstance: {fileID: 1863854059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446e7bb4a91a1c04e949dce1d5b65ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorBottle
 --- !u!114 &1863854062 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2054333931113142753, guid: 0888e26c6e407354692759a171445679,
@@ -5961,6 +6659,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1042160769}
   m_SourcePrefab: {fileID: 100100000, guid: 68a15fdaa550ec24e9287963b174cec4, type: 3}
+--- !u!224 &2049184222 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6647711246678272995, guid: 0888e26c6e407354692759a171445679,
+    type: 3}
+  m_PrefabInstance: {fileID: 1863854059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2080691963
 PrefabInstance:
   m_ObjectHideFlags: 0

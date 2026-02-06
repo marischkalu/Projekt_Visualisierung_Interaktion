@@ -35,13 +35,14 @@ public class StartMenu : MonoBehaviour
 
     public void LoadGame()
     {
+        SaveSystem.SaveLevel(LoadLevel(), 0);
         SceneManager.LoadScene("Gallery");
     }
 
     void EraseGameState()
     {
         bool[] levelCompleted = new bool[SaveSystem.TotalLevelCount];
-        SaveSystem.SaveLevel(levelCompleted);
+        SaveSystem.SaveLevel(levelCompleted, 0);
     }
 
     bool[] LoadLevel()

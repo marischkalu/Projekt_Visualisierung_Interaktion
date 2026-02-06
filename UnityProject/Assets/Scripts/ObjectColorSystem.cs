@@ -2,21 +2,19 @@ using UnityEngine;
 
 public class ObjectColorSystem : MonoBehaviour
 {
-
-    [Header("References")]
     [SerializeField] private Renderer _renderer;
     private Rigidbody _rigidbody;
 
-    private Color _dissolveColor = Color.clear;
+    [SerializeField] public Color CorrectColor;
+    public Color AppliedColor;
 
-    [Header("Trigger Settings")]
     [SerializeField] private string _interactorTag = "Interactor";
     [SerializeField] private int _dynamicMarerialIndex;
 
 
     void Start()
     {
-
+        AppliedColor = _renderer.materials[_dynamicMarerialIndex].color;
 
     }
 
@@ -44,11 +42,11 @@ public class ObjectColorSystem : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<SplashBehaviour>(out SplashBehaviour splash))
         {
-            _dissolveColor = splash.SplashColor;
+            AppliedColor = splash.SplashColor;
         }
+        _renderer.materials[_dynamicMarerialIndex].color = AppliedColor;
         _rigidbody.isKinematic = false;
 
-        _renderer.materials[_dynamicMarerialIndex].color = _dissolveColor;
     }
 
     private void Update()

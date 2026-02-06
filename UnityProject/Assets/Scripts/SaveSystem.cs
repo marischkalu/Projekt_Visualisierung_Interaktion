@@ -6,13 +6,13 @@ public static class SaveSystem
 {
     public static int TotalLevelCount = 3;
 
-    public static void SaveLevel (bool[] levelCompleted)
+    public static void SaveLevel (bool[] levelCompleted, int currentLevel)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/level.cnt";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(levelCompleted);
+        PlayerData data = new PlayerData(levelCompleted, currentLevel);
 
         formatter.Serialize(stream, data);
         stream.Close();
