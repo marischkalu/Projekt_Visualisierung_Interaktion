@@ -26,9 +26,15 @@ public class LevelManager : MonoBehaviour
         if (!AreAllPaintedObjectsCorrect()) return;
         bool[] gameState = LoadLevel();
 
+        if (_thisLevel == 3 && gameState[_thisLevelNormalized] == false)
+        {
+            gameState[_thisLevelNormalized] = true;
+            SaveLevel(gameState, 0);
+            LoadBookEndScene();
+            return;
+        }
         gameState[_thisLevelNormalized] = true;
         SaveLevel(gameState, 0);
-
         LoadGalleryScene();
     }
 
@@ -43,6 +49,11 @@ public class LevelManager : MonoBehaviour
         SaveSystem.SaveLevel(levelCompleted, currentLevel);
     }
 
+    void LoadBookEndScene()
+    {
+        SceneManager.LoadScene("Book_End");
+    }
+
     void LoadGalleryScene()
     {
         SceneManager.LoadScene("Gallery");
@@ -54,7 +65,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!_objectsToPaint[i].AppliedColor.Equals(_objectsToPaint[i].CorrectColor)) return false;
         }
-        if (_objectsToPaintWithMultipleColors.Length != null)
+        if (_objectsToPaintWithMultipleColors != null)
         {
             for (int i = 0; i < _objectsToPaintWithMultipleColors.Length; i++)
             {

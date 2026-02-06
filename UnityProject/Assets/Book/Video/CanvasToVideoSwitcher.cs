@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class CanvasToVideoSwitcher : MonoBehaviour
 {
     [SerializeField] private GameObject _startCanvas;
@@ -12,8 +12,12 @@ public class CanvasToVideoSwitcher : MonoBehaviour
 
     void Start()
     {
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.visible = true;
         _startCanvas.SetActive(true);
         _videoCanvas.SetActive(false);
+
+        _videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     // Button
@@ -30,5 +34,10 @@ public class CanvasToVideoSwitcher : MonoBehaviour
         _videoPlayer.Pause();
         yield return new WaitForSeconds(_videoStartDelay);
         _videoPlayer.Play();
+    }
+
+    void OnVideoEnd(VideoPlayer _videoPlayer)
+    {
+        SceneManager.LoadScene("Gallery");
     }
 }
