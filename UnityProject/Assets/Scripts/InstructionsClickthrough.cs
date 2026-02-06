@@ -19,8 +19,7 @@ public class InstructionsClickthrough : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
-        UnityEngine.Cursor.visible = true;
+        InstructionsStartEvent?.Invoke();
 
         _texts = _textsParent.GetComponentsInChildren<TMP_Text>(true);
 

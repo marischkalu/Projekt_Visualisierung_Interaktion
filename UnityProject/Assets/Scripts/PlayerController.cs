@@ -249,6 +249,7 @@ public class PlayerController : MonoBehaviour
 
     void LockPlayer()
     {
+        Time.timeScale = 0f;
         CurrentPlayerState = PlayerState.Passive;
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = true;
@@ -256,6 +257,7 @@ public class PlayerController : MonoBehaviour
     
     void UnlockPlayer()
     {
+        Time.timeScale = 1.0f;
         CurrentPlayerState = PlayerState.Active;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
