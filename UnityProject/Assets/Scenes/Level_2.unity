@@ -182,17 +182,17 @@ PrefabInstance:
     - target: {fileID: 8535206813136999494, guid: a2f89b2379f501e4f8feb163b74b77a5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -3.123
       objectReference: {fileID: 0}
     - target: {fileID: 8535206813136999494, guid: a2f89b2379f501e4f8feb163b74b77a5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.15
+      value: 2.666
       objectReference: {fileID: 0}
     - target: {fileID: 8535206813136999494, guid: a2f89b2379f501e4f8feb163b74b77a5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.18
+      value: -8.029
       objectReference: {fileID: 0}
     - target: {fileID: 8535206813136999494, guid: a2f89b2379f501e4f8feb163b74b77a5,
         type: 3}
@@ -1431,7 +1431,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 8d0862a57ee713740850e76f556878b6, type: 2}
+  sharedProfile: {fileID: 11400000, guid: f004044d7dd085c4c9feb617169b9603, type: 2}
 --- !u!4 &519351278
 Transform:
   m_ObjectHideFlags: 0
@@ -5457,7 +5457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!215 &1684713840
 ReflectionProbe:
   m_ObjectHideFlags: 0
