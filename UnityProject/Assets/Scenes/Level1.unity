@@ -7483,9 +7483,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1058627699413625321, guid: f8e138f3638b1134297ae7a068ea44d2,
         type: 3}
-      propertyPath: _levelOneInventoryColor.b
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: walkAudio
+      value: 
+      objectReference: {fileID: 2517551812427236384}
     - target: {fileID: 1058627699413625321, guid: f8e138f3638b1134297ae7a068ea44d2,
         type: 3}
       propertyPath: _levelOneInventoryColor.g
@@ -7556,6 +7556,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e138f3638b1134297ae7a068ea44d2, type: 3}
+--- !u!82 &2517551812427236384 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7998676858498423619, guid: f8e138f3638b1134297ae7a068ea44d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2517551812427236383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3190836481318598595
 PrefabInstance:
   m_ObjectHideFlags: 0

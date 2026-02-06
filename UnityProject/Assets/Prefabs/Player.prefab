@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6160635978547180956}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 83.71, z: 23.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -403,10 +403,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3de27f5957cfe5438be3611a3f9838e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  walkAudio: {fileID: 7998676858498423619}
   _camera: {fileID: 3533839402885114733}
   _orbMaterial: {fileID: 2100000, guid: be079288dfdf03c42b06273f40536985, type: 2}
   _orbThrowForce: 400
   _colorThrowForce: 800
+  _levelOneInventoryColor: {r: 0.2830189, g: 0.05465613, b: 0, a: 0}
 --- !u!82 &7998676858498423619
 AudioSource:
   m_ObjectHideFlags: 0

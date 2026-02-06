@@ -8,7 +8,7 @@ using System.Linq;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    //public AudioSource walkAudio; // Sounddesign - Walking Sound
+    public AudioSource walkAudio; // Sounddesign - Walking Sound
 
     public enum PlayerState { Active, Passive }
     public static PlayerState CurrentPlayerState { get; private set; }
@@ -73,16 +73,16 @@ public class PlayerController : MonoBehaviour
         SwitchPlayerState();
 
 
-        // Sounddesign - Walking Sound
-        //if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-        //{
-        //    if (!walkAudio.isPlaying)
-        //        walkAudio.Play();
-        //}
-        //else
-        //{
-        //    walkAudio.Stop();
-        //}
+        //Sounddesign - Walking Sound
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        {
+            if (!walkAudio.isPlaying)
+                walkAudio.Play();
+        }
+        else
+        {
+            walkAudio.Stop();
+        }
     }
 
 
