@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Rigidbody))]
 public class ObjectColorSystem : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;

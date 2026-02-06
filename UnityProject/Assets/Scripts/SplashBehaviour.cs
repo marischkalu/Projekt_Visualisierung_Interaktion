@@ -28,4 +28,9 @@ public class SplashBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
 }
