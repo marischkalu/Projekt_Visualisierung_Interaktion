@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class SplashManager : MonoBehaviour
 {
-    [SerializeField] private Image _splashOne;
-    [SerializeField] private Image _splashTwo;
+    [SerializeField] private Image _splash;
 
 
     [SerializeField] Outline _ammoColorHighlight;
@@ -24,10 +23,9 @@ public class SplashManager : MonoBehaviour
 
     }
 
-    void OnUpdateHudColorSplashesEvent(Color[] colors)
+    void OnUpdateHudColorSplashesEvent(Color color)
     {
-        _splashOne.color = colors[0];
-        _splashTwo.color = colors[1];
+        _splash.color = color;
     }
 
 

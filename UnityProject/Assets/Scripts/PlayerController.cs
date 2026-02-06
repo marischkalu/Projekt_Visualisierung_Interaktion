@@ -1,7 +1,9 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine.Rendering;
+using System.Linq;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public static event Action<int> UpdateOrbCountEvent;
     public static event Action SwitchAmmoEvent;
-    public static event Action<Color[]> UpdateHudColorSplashesEvent;
+    public static event Action<Color> UpdateHudColorSplashesEvent;
 
     private Rigidbody _rigidbody;
     [SerializeField] private GameObject _camera;
@@ -27,10 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private int _orbCount = 0;
 
-    //private Color _colorOne = Color.clear;
-    //private Color _colorTwo = Color.clear;
-    private Color _colorOne = Color.red;
-    private Color _colorTwo = Color.blue;
+    private List<Color> _colorInventory = new() {};
+    private int _equippedColorIndex = 0;
 
 
     private Vector3 _moveDirection = Vector3.zero;
@@ -91,13 +91,14 @@ public class PlayerController : MonoBehaviour
                         break;
 
                     case Ammo.Color:
-                        if (Input.GetMouseButtonDown(0) && !_colorOne.Equals(Color.clear))
+                        if (Input.GetKeyDown(KeyCode.Tab) && !(_colorInventory.Count == 0))
                         {
-                            UseBrush(_colorOne);
+                            _equippedColorIndex = _colorInventory.Count - 1 > _equippedColorIndex ? _equippedColorIndex + 1 : 0;
+                            UpdateHudColorSplashesEvent?.Invoke(_colorInventory[_equippedColorIndex]);
                         }
-                        else if (Input.GetMouseButtonDown(1) && !_colorTwo.Equals(Color.clear))
+                        if (Input.GetMouseButtonDown(0) && !(_colorInventory.Count == 0))
                         {
-                            UseBrush(_colorTwo);
+                            UseBrush();
                         }
                         break;
                 }
@@ -171,7 +172,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void UseBrush(Color brushColor)
+    void UseBrush()
     {
         GameObject splash = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         splash.GetComponent<Collider>().isTrigger = true;
@@ -186,7 +187,7 @@ public class PlayerController : MonoBehaviour
         Rigidbody rb = splash.AddComponent<Rigidbody>();
         SplashBehaviour splashBehaviour = splash.AddComponent<SplashBehaviour>();
 
-        splashBehaviour.SplashColor = brushColor;
+        splashBehaviour.SplashColor = _colorInventory[_equippedColorIndex];
 
         rb.AddForce(_camera.transform.forward * _colorThrowForce);
     }
@@ -267,10 +268,12 @@ public class PlayerController : MonoBehaviour
     
     void OnGainedColor(Color[] colors)
     {
-        _colorOne = colors[0];
-        _colorTwo = colors[1];
-        UpdateHudColorSplashesEvent?.Invoke(colors);
-        Debug.Log("You gained color.");
+        _colorInventory.Clear();
+        for (int i = 0; i < colors.Length; i++)
+        {
+            _colorInventory.Add(colors[i]);
+        }
+        UpdateHudColorSplashesEvent?.Invoke(_colorInventory[_equippedColorIndex]);
     }
 
     void OnDestroy()
