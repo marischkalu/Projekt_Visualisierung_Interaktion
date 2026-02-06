@@ -50,18 +50,19 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        UnityEngine.Cursor.visible = false;
 
         _rigidbody = GetComponent<Rigidbody>();
         _characterController = GetComponent<CharacterController>();
         Collectible.CollectibleCollisionEvent += OnCollectibleCollision;
-        Minigame.MinigameStartEvent += OnMinigameStart;
-        Minigame.MinigameEndEvent += OnMinigameEnd;
+        Minigame.MinigameStartEvent += LockPlayer;
+        Minigame.MinigameEndEvent += UnlockPlayer;
         Minigame.GainedColorEvent += OnGainedColor;
 
-        PauseGame.PauseMenuOpenedEvent += OnPauseMenuOpened;
-        PauseGame.PauseMenuClosedEvent += OnPauseMenuClosed;
+        PauseGame.PauseMenuOpenedEvent += LockPlayer;
+        PauseGame.PauseMenuClosedEvent += UnlockPlayer;
+
+        InstructionsClickthrough.InstructionsStartEvent += LockPlayer;
+        InstructionsClickthrough.InstructionsEndEvent += UnlockPlayer;
     }
 
     // Update is called once per frame
@@ -232,26 +233,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Orb Count: {_orbCount}");
     }
 
-    void OnMinigameStart()
-    {
-        LockPlayer();
-    }
-
-    void OnMinigameEnd()
-    {
-        UnlockPlayer();
-    }
-
-    void OnPauseMenuOpened()
-    {
-        LockPlayer();
-    }
-
-    void OnPauseMenuClosed()
-    {
-        UnlockPlayer();
-    }
-
     void LockPlayer()
     {
         CurrentPlayerState = PlayerState.Passive;
@@ -279,11 +260,14 @@ public class PlayerController : MonoBehaviour
     void OnDestroy()
     {
         Collectible.CollectibleCollisionEvent -= OnCollectibleCollision;
-        Minigame.MinigameStartEvent -= OnMinigameStart;
-        Minigame.MinigameEndEvent -= OnMinigameEnd;
+        Minigame.MinigameStartEvent -= LockPlayer;
+        Minigame.MinigameEndEvent -= UnlockPlayer;
         Minigame.GainedColorEvent -= OnGainedColor;
 
-        PauseGame.PauseMenuOpenedEvent -= OnPauseMenuOpened;
-        PauseGame.PauseMenuClosedEvent -= OnPauseMenuClosed;
+        PauseGame.PauseMenuOpenedEvent -= LockPlayer;
+        PauseGame.PauseMenuClosedEvent -= UnlockPlayer;
+
+        InstructionsClickthrough.InstructionsStartEvent -= LockPlayer;
+        InstructionsClickthrough.InstructionsEndEvent -= UnlockPlayer;
     }
 }
